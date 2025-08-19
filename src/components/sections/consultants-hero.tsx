@@ -49,14 +49,6 @@ export function ConsultantsHero() {
                 <SearchIcon className="w-5 h-5 mr-2" />
                 Browse Teachers
               </Button>
-              <Button
-                variant="outline"
-                size="lg"
-                className="border-primary-200 text-primary-700 hover:bg-primary-50 px-8 py-4 text-lg"
-              >
-                <WritingIcon className="w-5 h-5 mr-2" />
-                Read Blog Posts
-              </Button>
             </motion.div>
           </motion.div>
 
