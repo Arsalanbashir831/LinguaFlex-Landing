@@ -1,10 +1,7 @@
 "use client";
 
 import { motion } from "motion/react";
-import { Card, CardContent } from "@/components/ui/card";
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
-import { Badge } from "@/components/ui/badge";
-import { Button } from "@/components/ui/button";
+import { BlogCard, type BlogCardPost } from "@/components/blog/blog-card";
 
 interface BlogPost {
   id: string;
@@ -15,38 +12,46 @@ interface BlogPost {
   tags: string[];
   datePublished: string;
   slug: string;
+  thumbnail: string;
+  readTime: number;
 }
 
 const blogPosts: BlogPost[] = [
   {
     id: "1",
-    title: "5 Common Spanish Grammar Mistakes and How to Avoid Them",
-    excerpt: "Learn about the most frequent errors Spanish learners make and practical tips to overcome them. From ser vs. estar to subjunctive mood usage.",
+    title: "How I Built a 6-Figure Spanish Consulting Business",
+    excerpt: "From teaching basics to strategic business consulting - discover the proven framework I used to scale my Spanish expertise into a thriving consultancy serving Fortune 500 companies.",
     authorName: "Maria Rodriguez",
     authorAvatar: "/images/teacher-maria.jpg",
-    tags: ["Spanish", "Grammar", "Tips"],
+    tags: ["Business Strategy", "Success Story", "Entrepreneurship"],
     datePublished: "2024-12-15",
-    slug: "spanish-grammar-mistakes"
+    slug: "spanish-consulting-business-success",
+    thumbnail: "https://images.unsplash.com/photo-1554224155-6726b3ff858f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80",
+    readTime: 8
   },
   {
     id: "2",
-    title: "The Art of French Pronunciation: A Beginner's Guide",
-    excerpt: "Master the beautiful sounds of French with this comprehensive guide covering nasal sounds, liaisons, and common pronunciation pitfalls.",
+    title: "Cultural Intelligence: The Secret Weapon of Global Leaders",
+    excerpt: "Why cultural fluency matters more than language fluency in international business. Learn the frameworks top executives use to navigate cross-cultural negotiations.",
     authorName: "Jean-Pierre Dubois",
     authorAvatar: "/images/teacher-jean.jpg",
-    tags: ["French", "Pronunciation", "Beginner"],
+    tags: ["Cultural Intelligence", "Leadership", "Global Business"],
     datePublished: "2024-12-10",
-    slug: "french-pronunciation-guide"
+    slug: "cultural-intelligence-global-leaders",
+    thumbnail: "https://images.unsplash.com/photo-1521737711867-e3b97375f902?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80",
+    readTime: 10
   },
   {
     id: "3",
-    title: "Building Confidence for English Job Interviews",
-    excerpt: "Essential strategies for non-native speakers to excel in English job interviews, including common questions and cultural nuances.",
+    title: "From ESL Teacher to Executive Coach: My $200K Transformation",
+    excerpt: "The strategic pivot that transformed my English teaching career into a high-impact executive coaching practice. Real numbers, proven strategies, actionable insights.",
     authorName: "Dr. Sarah Chen",
     authorAvatar: "/images/teacher-sarah.jpg",
-    tags: ["English", "Career", "Interview"],
+    tags: ["Career Transformation", "Executive Coaching", "Success Story"],
     datePublished: "2024-12-08",
-    slug: "english-job-interviews"
+    slug: "esl-to-executive-coach-transformation",
+    thumbnail: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80",
+    readTime: 12
   }
 ];
 
@@ -77,15 +82,26 @@ export function BlogList() {
   return (
     <section id="blogs" className="py-20 bg-gray-50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <motion.h2
+        <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="text-3xl sm:text-4xl font-bold text-gray-900 text-center mb-16"
+          className="text-center mb-16"
         >
-          Teachers&apos; Blog Posts
-        </motion.h2>
+          <motion.h2 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-4">
+            Expert Insights & Success Stories
+          </motion.h2>
+          <motion.p 
+            initial={{ opacity: 0, y: 10 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+            className="text-lg text-gray-600 max-w-3xl mx-auto"
+          >
+            Discover proven strategies, industry insights, and transformative experiences shared by our world-class consultants and language experts.
+          </motion.p>
+        </motion.div>
         
         <motion.div
           variants={staggerContainer}
@@ -103,57 +119,7 @@ export function BlogList() {
                 transition: { duration: 0.2 }
               }}
             >
-              <Card className="bg-white border-primary-100/60 rounded-2xl shadow-sm hover:shadow-lg transition-all duration-300 h-full">
-                <CardContent className="p-6">
-                  <div className="flex items-center mb-4">
-                    <Avatar className="w-10 h-10 mr-3">
-                      <AvatarImage 
-                        src={post.authorAvatar} 
-                        alt={post.authorName}
-                      />
-                      <AvatarFallback className="bg-primary-100 text-primary-600 text-sm font-semibold">
-                        {post.authorName.split(' ').map(n => n[0]).join('')}
-                      </AvatarFallback>
-                    </Avatar>
-                    <div>
-                      <p className="text-sm font-medium text-gray-900">
-                        {post.authorName}
-                      </p>
-                      <p className="text-xs text-gray-500">
-                        {formatDate(post.datePublished)}
-                      </p>
-                    </div>
-                  </div>
-                  
-                  <h3 className="text-lg font-semibold text-gray-900 mb-3 line-clamp-2">
-                    {post.title}
-                  </h3>
-                  
-                  <p className="text-sm text-gray-600 mb-4 line-clamp-3">
-                    {post.excerpt}
-                  </p>
-                  
-                  <div className="flex flex-wrap gap-1 mb-4">
-                    {post.tags.map((tag, index) => (
-                      <Badge 
-                        key={index}
-                        variant="secondary" 
-                        className="text-xs bg-primary-50 text-primary-700 hover:bg-primary-100"
-                      >
-                        {tag}
-                      </Badge>
-                    ))}
-                  </div>
-                  
-                  <Button 
-                    variant="outline"
-                    className="w-full border-primary-200 text-primary-700 hover:bg-primary-50"
-                    size="sm"
-                  >
-                    Read More
-                  </Button>
-                </CardContent>
-              </Card>
+              <BlogCard post={post as BlogCardPost} showCta />
             </motion.div>
           ))}
         </motion.div>

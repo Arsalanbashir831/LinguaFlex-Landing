@@ -25,7 +25,7 @@ const footerLinks = {
 export function SiteFooter() {
   return (
     <footer className="bg-primary-50 border-t border-primary-200">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-12">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
           <div className="col-span-1 md:col-span-1 space-y-3">
             <Logo />
@@ -84,7 +84,7 @@ export function SiteFooter() {
           </div>
         </div>
         
-        <div className="border-t border-primary-200 mt-8 pt-8">
+        <div className="border-t border-primary-200 mt-8 py-4">
           <p className="text-center text-primary-500 text-sm">
             © 2025 Linguaflex. All Rights Reserved.
           </p>

@@ -1,0 +1,109 @@
+"use client";
+
+import Image from "next/image";
+import Link from "next/link";
+import { Card, CardContent } from "@/components/ui/card";
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+import { Badge } from "@/components/ui/badge";
+import { Button } from "@/components/ui/button";
+import { BookOpen } from "lucide-react";
+
+export interface BlogCardPost {
+	id?: string;
+	slug: string;
+	title: string;
+	excerpt: string;
+	thumbnail: string;
+	readTime: number;
+	authorName: string;
+	authorAvatar: string;
+	tags: string[];
+	datePublished: string;
+	views?: number;
+}
+
+interface BlogCardProps {
+	post: BlogCardPost;
+	showCta?: boolean;
+	showViews?: boolean;
+	className?: string;
+}
+
+function formatDate(dateString: string) {
+	const date = new Date(dateString);
+	return date.toLocaleDateString("en-US", {
+		year: "numeric",
+		month: "long",
+		day: "numeric",
+	});
+}
+
+export function BlogCard({ post, showCta = false, showViews = false, className = "" }: BlogCardProps) {
+	return (
+		<Card className={`bg-white border-primary-100/60 rounded-2xl shadow-sm hover:shadow-lg transition-all duration-300 h-full overflow-hidden py-0 ${className}`}>
+			{/* Thumbnail Image */}
+			<div className="relative h-48 w-full">
+				<Image
+					src={post.thumbnail}
+					alt={post.title}
+					fill
+					className="object-cover"
+					sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+				/>
+				<div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent" />
+				<div className="absolute top-4 right-4">
+					<Badge className="bg-white/90 text-gray-700 hover:bg-white">
+						{post.readTime} min read
+					</Badge>
+				</div>
+			</div>
+
+			<CardContent className="p-6">
+				<div className="flex items-center mb-4">
+					<Avatar className="w-10 h-10 mr-3">
+						<AvatarImage src={post.authorAvatar} alt={post.authorName} />
+						<AvatarFallback className="bg-primary-100 text-primary-600 text-sm font-semibold">
+							{post.authorName.split(" ").map((n) => n[0]).join("")}
+						</AvatarFallback>
+					</Avatar>
+					<div>
+						<p className="text-sm font-medium text-gray-900">{post.authorName}</p>
+						<p className="text-xs text-gray-500">{formatDate(post.datePublished)}</p>
+					</div>
+				</div>
+
+				<h3 className="text-lg font-semibold text-gray-900 mb-3 line-clamp-2 min-h-[3.5rem]">{post.title}</h3>
+
+				<p className="text-sm text-gray-600 mb-4 line-clamp-3 min-h-[4.5rem]">{post.excerpt}</p>
+
+				<div className="flex flex-wrap gap-1 mb-4 min-h-[2rem] items-start">
+					{post.tags.slice(0, 2).map((tag, index) => (
+						<Badge key={index} variant="secondary" className="text-xs bg-primary-50 text-primary-700 hover:bg-primary-100">
+							{tag}
+						</Badge>
+					))}
+					{post.tags.length > 2 && (
+						<Badge variant="secondary" className="text-xs bg-gray-100 text-gray-600">
+							+{post.tags.length - 2}
+						</Badge>
+					)}
+				</div>
+
+				{showViews && typeof post.views === "number" ? (
+					<div className="flex items-center text-sm text-gray-500">
+						<BookOpen className="w-4 h-4 mr-1" />
+						{post.views.toLocaleString()} views
+					</div>
+				) : null}
+
+				{showCta ? (
+					<Link href={`/blog/${post.slug}`}>
+						<Button variant="outline" className="w-full border-primary-200 text-primary-700 hover:bg-primary-50" size="sm">
+							Read More
+						</Button>
+					</Link>
+				) : null}
+			</CardContent>
+		</Card>
+	);
+}

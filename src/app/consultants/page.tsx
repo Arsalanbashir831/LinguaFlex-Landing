@@ -62,7 +62,7 @@ export default function ConsultantsPage() {
         <Reasons 
           title="Why Learn from Linguaflex Teachers?"
           reasons={whyLearnReasons}
-          className="bg-gray-50"
+          className="bg-primary-50"
         />
         <CTASplit 
           leftCTA={ctaData.leftCTA}
