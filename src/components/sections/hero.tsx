@@ -4,9 +4,9 @@ import { motion } from "motion/react";
 import { Button } from "@/components/ui/button";
 import { iconMap } from "@/lib/icons";
 import { LottiePlayer } from "@/components/ui/lottie-player";
-import Image from "next/image";
 import micAnimation from "@/assets/lottie/mic.json";
 import flagAnimation from "@/assets/lottie/flags.json";
+import { appLinks } from "@/lib/app-links";
 
 const MicrophoneIcon = iconMap.microphone;
 const BriefcaseIcon = iconMap.briefcase;
@@ -46,6 +46,7 @@ export function Hero() {
               transition={{ duration: 0.6, delay: 0.4 }}
               className="mt-8 flex flex-col sm:flex-row gap-4 justify-center lg:justify-start"
             >
+              <a href={appLinks.language}>
               <Button 
                 size="lg" 
                 className="bg-primary-500 hover:bg-primary-600 text-white px-8 py-4 text-lg"
@@ -53,6 +54,8 @@ export function Hero() {
                 <MicrophoneIcon className="w-5 h-5 mr-2" />
                 Start Learning
               </Button>
+              </a>
+              <a href={appLinks.signup}>
               <Button 
                 variant="outline" 
                 size="lg"
@@ -61,6 +64,7 @@ export function Hero() {
                 <BriefcaseIcon className="w-5 h-5 mr-2" />
                 Become a Teacher
               </Button>
+              </a>
             </motion.div>
           </motion.div>
           

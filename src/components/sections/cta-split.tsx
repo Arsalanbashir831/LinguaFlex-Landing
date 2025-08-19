@@ -2,6 +2,7 @@
 
 import { motion } from "motion/react";
 import { Button } from "@/components/ui/button";
+import { appLinks } from "@/lib/app-links";
 import { Card, CardContent } from "@/components/ui/card";
 import { iconMap, type IconName } from "@/lib/icons";
 
@@ -51,13 +52,15 @@ export function CTASplit({ leftCTA, rightCTA, className = "" }: CTASplitProps) {
                 <p className="text-gray-600 mb-8 leading-relaxed">
                   {leftCTA.description}
                 </p>
-                <Button 
-                  size="lg" 
-                  className="bg-primary-500 hover:bg-primary-600 text-white px-8 py-4"
-                >
-                  <LeftIcon className="w-5 h-5 mr-2" />
-                  {leftCTA.buttonText}
-                </Button>
+                <a href={leftCTA.href}>
+                  <Button 
+                    size="lg" 
+                    className="bg-primary-500 hover:bg-primary-600 text-white px-8 py-4"
+                  >
+                    <LeftIcon className="w-5 h-5 mr-2" />
+                    {leftCTA.buttonText}
+                  </Button>
+                </a>
               </CardContent>
             </Card>
           </motion.div>
@@ -76,14 +79,16 @@ export function CTASplit({ leftCTA, rightCTA, className = "" }: CTASplitProps) {
                 <p className="text-gray-600 mb-8 leading-relaxed">
                   {rightCTA.description}
                 </p>
-                <Button 
-                  variant="outline" 
-                  size="lg"
-                  className="border-primary-200 text-primary-700 hover:bg-primary-50 px-8 py-4"
-                >
-                  <RightIcon className="w-5 h-5 mr-2" />
-                  {rightCTA.buttonText}
-                </Button>
+                <a href={rightCTA.href}>
+                  <Button 
+                    variant="outline" 
+                    size="lg"
+                    className="border-primary-200 text-primary-700 hover:bg-primary-50 px-8 py-4"
+                  >
+                    <RightIcon className="w-5 h-5 mr-2" />
+                    {rightCTA.buttonText}
+                  </Button>
+                </a>
               </CardContent>
             </Card>
           </motion.div>

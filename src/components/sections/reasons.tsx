@@ -29,18 +29,18 @@ export function Reasons({ title, reasons, className = "" }: ReasonsProps) {
   };
 
   return (
-    <section className={`py-20 ${className}`}>
+    <section className={`py-12 bg-gradient-to-r from-primary-500 to-primary-600 ${className}`}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.h2
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="text-3xl sm:text-4xl font-bold text-gray-900 text-center mb-16"
+          className="text-3xl sm:text-4xl font-bold text-white text-center mb-16"
         >
           {title}
         </motion.h2>
-        
+
         <motion.div
           variants={staggerContainer}
           initial="initial"
@@ -54,16 +54,16 @@ export function Reasons({ title, reasons, className = "" }: ReasonsProps) {
               <motion.div
                 key={index}
                 variants={fadeInUp}
-                className="flex items-start space-x-4"
+                className="flex items-start gap-4 p-4 rounded-2xl hover:bg-white/10 transition-colors"
               >
-                <div className="w-8 h-8 flex items-center justify-center flex-shrink-0">
-                  <IconComponent className="w-6 h-6 text-primary-600" />
+                <div className="w-10 h-10 flex items-center justify-center flex-shrink-0 bg-white/20 rounded-xl">
+                  <IconComponent className="w-6 h-6 text-white" />
                 </div>
                 <div>
-                  <h3 className="text-lg font-semibold text-gray-900 mb-2">
+                  <h3 className="text-lg font-semibold text-white mb-2">
                     {reason.title}
                   </h3>
-                  <p className="text-gray-600 leading-relaxed">
+                  <p className="text-primary-100 leading-relaxed">
                     {reason.description}
                   </p>
                 </div>

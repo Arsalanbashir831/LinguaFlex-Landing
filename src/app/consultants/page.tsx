@@ -5,6 +5,7 @@ import { TeacherGrid } from "@/components/sections/teacher-grid";
 import { BlogList } from "@/components/sections/blog-list";
 import { ConsultantsHero } from "@/components/sections/consultants-hero";
 import { Reasons } from "@/components/sections/reasons";
+import { appLinks } from "@/lib/app-links";
 
 export const metadata = {
   title: "Find Your Teacher. Learn from the Best · Linguaflex",
@@ -41,14 +42,14 @@ export default function ConsultantsPage() {
       description: "Find the perfect teacher for your goals. Learn faster, smarter, better.",
       buttonText: "Start Learning",
       buttonIcon: "rocket" as const,
-      href: "/app/learn"
+      href: appLinks.language
     },
     rightCTA: {
       title: "For Teachers",
       description: "Join Linguaflex to share your expertise, publish your blog posts, and earn.",
       buttonText: "Become a Teacher",
       buttonIcon: "briefcase" as const,
-      href: "/consultants#become-a-teacher"
+      href: appLinks.signup
     }
   };
 

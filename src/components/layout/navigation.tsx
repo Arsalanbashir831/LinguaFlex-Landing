@@ -4,6 +4,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { Button } from "@/components/ui/button";
 import { Logo } from "@/components/common/logo";
+import { appLinks } from "@/lib/app-links";
 
 const navigation = [
   { name: "Home", href: "/" },
@@ -52,12 +53,16 @@ export function Navigation() {
           </nav>
           
           <div className="flex items-center space-x-4">
-            <Button variant="ghost" className="text-primary-700 hover:bg-primary-50">
-              Sign In
-            </Button>
-            <Button className="bg-primary-600 hover:bg-primary-700 text-white">
-              Get Started
-            </Button>
+            <a href={appLinks.signIn}>
+              <Button variant="ghost" className="text-primary-700 hover:bg-primary-50">
+                Sign In
+              </Button>
+            </a>
+            <a href={appLinks.language}>
+              <Button className="bg-primary-600 hover:bg-primary-700 text-white">
+                Get Started
+              </Button>
+            </a>
           </div>
         </div>
       </div>
