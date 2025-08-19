@@ -1,7 +1,7 @@
 "use client";
 
-import { useEffect, useRef } from "react";
-import Lottie, { type LottieRef } from "lottie-react";
+import { useEffect, useState } from "react";
+import Lottie from "lottie-react";
 
 interface LottiePlayerProps {
   animationData: object;
@@ -16,24 +16,23 @@ export function LottiePlayer({
   loop = true,
   autoplay = true,
 }: LottiePlayerProps) {
-  const lottieRef = useRef<LottieRef>(null);
+  const [shouldAutoplay, setShouldAutoplay] = useState(autoplay);
 
   useEffect(() => {
     // Respect prefers-reduced-motion
     const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     
-    if (prefersReducedMotion && lottieRef.current) {
-      lottieRef.current.pause();
+    if (prefersReducedMotion) {
+      setShouldAutoplay(false);
     }
   }, []);
 
   return (
     <Lottie
-      lottieRef={lottieRef}
       animationData={animationData}
       className={className}
       loop={loop}
-      autoplay={autoplay}
+      autoplay={shouldAutoplay}
     />
   );
 }

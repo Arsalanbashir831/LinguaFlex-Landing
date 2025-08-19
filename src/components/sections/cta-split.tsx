@@ -2,7 +2,6 @@
 
 import { motion } from "motion/react";
 import { Button } from "@/components/ui/button";
-import { appLinks } from "@/lib/app-links";
 import { Card, CardContent } from "@/components/ui/card";
 import { iconMap, type IconName } from "@/lib/icons";
 
@@ -25,12 +24,6 @@ interface CTASplitProps {
 }
 
 export function CTASplit({ leftCTA, rightCTA, className = "" }: CTASplitProps) {
-  const fadeInUp = {
-    initial: { opacity: 0, y: 20 },
-    animate: { opacity: 1, y: 0 },
-    transition: { duration: 0.6 }
-  };
-
   const LeftIcon = iconMap[leftCTA.buttonIcon];
   const RightIcon = iconMap[rightCTA.buttonIcon];
 

@@ -70,14 +70,7 @@ export function BlogList() {
     }
   };
 
-  const formatDate = (dateString: string) => {
-    const date = new Date(dateString);
-    return date.toLocaleDateString('en-US', {
-      year: 'numeric',
-      month: 'long',
-      day: 'numeric'
-    });
-  };
+
 
   return (
     <section id="blogs" className="py-20 bg-gray-50">

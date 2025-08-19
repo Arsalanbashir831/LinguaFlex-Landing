@@ -3,12 +3,13 @@ import { SiteFooter } from "@/components/sections/site-footer";
 import { BlogDetail } from "@/components/sections/blog-detail";
 
 interface BlogPageProps {
-  params: {
+  params: Promise<{
     slug: string;
-  };
+  }>;
 }
 
 export async function generateMetadata({ params }: BlogPageProps) {
+  const resolvedParams = await params;
   // In a real app, you'd fetch blog data based on slug
   const blogTitles: Record<string, string> = {
     'spanish-consulting-business-success': 'How I Built a 6-Figure Spanish Consulting Business',
@@ -16,7 +17,7 @@ export async function generateMetadata({ params }: BlogPageProps) {
     'esl-to-executive-coach-transformation': 'From ESL Teacher to Executive Coach: My $200K Transformation'
   };
 
-  const title = blogTitles[params.slug] || 'Blog Post';
+  const title = blogTitles[resolvedParams.slug] || 'Blog Post';
   
   return {
     title: `${title} · Linguaflex Blog`,
@@ -24,12 +25,14 @@ export async function generateMetadata({ params }: BlogPageProps) {
   };
 }
 
-export default function BlogPage({ params }: BlogPageProps) {
+export default async function BlogPage({ params }: BlogPageProps) {
+  const resolvedParams = await params;
+  
   return (
     <div className="min-h-screen bg-white">
       <Navigation />
       <main>
-        <BlogDetail slug={params.slug} />
+        <BlogDetail slug={resolvedParams.slug} />
       </main>
       <SiteFooter />
     </div>

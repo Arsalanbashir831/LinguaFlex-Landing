@@ -5,7 +5,7 @@ import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
-import { Calendar, Clock, BookOpen, ArrowLeft } from "lucide-react";
+import { Calendar, Clock, BookOpen } from "lucide-react";
 import Link from "next/link";
 import Image from "next/image";
 import { BlogCard, type BlogCardPost } from "@/components/blog/blog-card";

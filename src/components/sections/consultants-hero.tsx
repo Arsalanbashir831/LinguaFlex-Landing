@@ -7,7 +7,6 @@ import { LottiePlayer } from "@/components/ui/lottie-player";
 import lottieAnimation from "@/assets/lottie/tutor.json";
 
 const SearchIcon = iconMap["magnifying-glass"];
-const WritingIcon = iconMap["writing-hand"];
 
 export function ConsultantsHero() {
   return (
