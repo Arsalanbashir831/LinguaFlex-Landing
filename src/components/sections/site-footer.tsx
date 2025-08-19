@@ -84,8 +84,8 @@ export function SiteFooter() {
           </div>
         </div>
         
-        <div className="border-t border-gray-200 mt-8 pt-8">
-          <p className="text-center text-gray-500 text-sm">
+        <div className="border-t border-primary-200 mt-8 pt-8">
+          <p className="text-center text-primary-500 text-sm">
             © 2025 Linguaflex. All Rights Reserved.
           </p>
         </div>

@@ -53,7 +53,7 @@ export function CTASplit({ leftCTA, rightCTA, className = "" }: CTASplitProps) {
                 </p>
                 <Button 
                   size="lg" 
-                  className="bg-primary-600 hover:bg-primary-700 text-white px-8 py-4"
+                  className="bg-primary-500 hover:bg-primary-600 text-white px-8 py-4"
                 >
                   <LeftIcon className="w-5 h-5 mr-2" />
                   {leftCTA.buttonText}

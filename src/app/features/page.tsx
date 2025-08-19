@@ -6,6 +6,14 @@ import { DetailedFeature } from "@/components/sections/detailed-feature";
 import { iconMap } from "@/lib/icons";
 import { Card, CardContent } from "@/components/ui/card";
 
+// Import Lottie animations
+import tutorAnimation from "@/assets/lottie/tutor.json";
+import chatAnimation from "@/assets/lottie/chat.json";
+import teachingAnimation from "@/assets/lottie/teaching.json";
+import dashboardAnimation from "@/assets/lottie/dashboard.json";
+import communityAnimation from "@/assets/lottie/community.json";
+import securityAnimation from "@/assets/lottie/security.json";
+
 export const metadata = {
   title: "Features - What Makes Linguaflex Unique · Linguaflex",
   description: "Discover Linguaflex's powerful features: AI voice tutor, built-in chat system, freelance marketplace, personalized learning dashboard, global community, and secure payments.",
@@ -47,6 +55,7 @@ export default function FeaturesPage() {
                 "Multilingual support (English, Spanish, French, more coming soon)",
                 "Adaptive learning that grows with your pace"
               ]}
+              lottieAnimation={tutorAnimation}
             />
 
             <DetailedFeature
@@ -59,6 +68,7 @@ export default function FeaturesPage() {
                 "Secure and private chats",
                 "Similar to Upwork's chat for teachers and students"
               ]}
+              lottieAnimation={chatAnimation}
               reverse
             />
 
@@ -72,6 +82,7 @@ export default function FeaturesPage() {
                 "Reach a global student/client base",
                 "Ratings & reviews to build credibility"
               ]}
+              lottieAnimation={teachingAnimation}
             />
 
             <DetailedFeature
@@ -84,6 +95,7 @@ export default function FeaturesPage() {
                 "Achievements & rewards for consistency",
                 "Personalized recommendations for next lessons"
               ]}
+              lottieAnimation={dashboardAnimation}
               reverse
             />
 
@@ -97,6 +109,7 @@ export default function FeaturesPage() {
                 "Share experiences and tips",
                 "Build your global network"
               ]}
+              lottieAnimation={communityAnimation}
             />
 
             <DetailedFeature
@@ -109,10 +122,11 @@ export default function FeaturesPage() {
                 "Transparent commission model",
                 "Dispute resolution and support"
               ]}
+              lottieAnimation={securityAnimation}
               reverse
             />
 
-            <Card className="bg-gradient-to-r from-primary-600 to-primary-800 border-none text-white rounded-2xl">
+            <Card className="bg-gradient-to-r from-primary-500 to-primary-600 border-none text-white rounded-2xl">
               <CardContent className="p-12 text-center">
                 <div className="w-16 h-16 bg-white/20 rounded-2xl flex items-center justify-center mx-auto mb-6">
                   {iconMap.rocket && <iconMap.rocket className="w-8 h-8 text-white" />}

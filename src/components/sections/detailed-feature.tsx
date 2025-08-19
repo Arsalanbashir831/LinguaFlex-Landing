@@ -2,6 +2,7 @@
 
 import { motion } from "motion/react";
 import { iconMap, type IconName } from "@/lib/icons";
+import { LottiePlayer } from "@/components/ui/lottie-player";
 
 interface DetailedFeatureProps {
   icon: IconName;
@@ -9,6 +10,7 @@ interface DetailedFeatureProps {
   description: string;
   features: string[];
   reverse?: boolean;
+  lottieAnimation?: object;
 }
 
 export function DetailedFeature({ 
@@ -16,7 +18,8 @@ export function DetailedFeature({
   title, 
   description, 
   features, 
-  reverse = false 
+  reverse = false,
+  lottieAnimation
 }: DetailedFeatureProps) {
   const IconComponent = iconMap[icon];
   
@@ -68,8 +71,19 @@ export function DetailedFeature({
         variants={fadeInUp}
         className={reverse ? 'lg:order-1' : ''}
       >
-        <div className="aspect-square bg-gradient-to-br from-primary-100 to-primary-200 rounded-2xl flex items-center justify-center">
-          <IconComponent className="w-24 h-24 text-primary-600" />
+        <div className=" flex items-center justify-center ">
+          {lottieAnimation ? (
+            <div className="w-full h-full max-w-[400px] max-h-[400px]">
+              <LottiePlayer 
+                animationData={lottieAnimation}
+                className="w-full h-full shadow-lg aspect-square rounded-2xl bg-primary-50"
+                loop={true}
+                autoplay={true}
+              />
+            </div>
+          ) : (
+            <IconComponent className="w-24 h-24 text-primary-600" />
+          )}
         </div>
       </motion.div>
     </motion.div>
