@@ -1,0 +1,41 @@
+import {
+  Mic,
+  Briefcase,
+  Brain,
+  Headphones,
+  BarChart3,
+  Globe,
+  GraduationCap,
+  Laptop,
+  MessageCircle,
+  DollarSign,
+  CheckCircle2,
+  Rocket,
+  Search,
+  PenLine,
+  Lock,
+  Sparkles,
+  Pin,
+} from "lucide-react";
+
+export const iconMap = {
+  microphone: Mic,
+  briefcase: Briefcase,
+  brain: Brain,
+  headphones: Headphones,
+  "bar-chart": BarChart3,
+  earth: Globe,
+  "female-teacher": GraduationCap,
+  "male-technologist": Laptop,
+  "speech-bubble": MessageCircle,
+  dollar: DollarSign,
+  "white-tick": CheckCircle2,
+  rocket: Rocket,
+  "magnifying-glass": Search,
+  "writing-hand": PenLine,
+  lock: Lock,
+  star2: Sparkles,
+  "drawing-pin": Pin,
+} as const;
+
+export type IconName = keyof typeof iconMap;
