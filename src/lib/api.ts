@@ -5,22 +5,37 @@ const API_BASE_URL = process.env.NEXT_PUBLIC_API_BASE_URL || '';
 
 // Types for API responses
 export interface BlogPost {
-  id: string;
+  id: number;
   title: string;
-  excerpt: string;
-  content?: string; // Optional for list view
-  authorName: string;
-  authorBio?: string;
-  authorAvatar: string;
-  authorTitle?: string;
-  tags: string[];
-  datePublished: string;
-  readTime: number;
   slug: string;
-  views?: number;
-  likes?: number;
-  comments?: number;
   thumbnail: string;
+  category: string | null;
+  tags: string[];
+  tag_list: string;
+  status: string;
+  author_name: string;
+  created_at: string;
+  updated_at: string;
+  published_at: string;
+  meta_description: string;
+  read_time: number;
+  view_count: number;
+  is_published: boolean;
+  content?: string; // Full content for detail view
+}
+
+// Extended interface for blog detail - matches your API response exactly
+export interface BlogPostDetail extends BlogPost {
+  content: string; // Required for detail view
+  author: number; // Author ID from your API
+}
+
+// API Response wrapper
+export interface BlogListResponse {
+  count: number;
+  next: string | null;
+  previous: string | null;
+  results: BlogPost[];
 }
 
 export interface Teacher {
@@ -58,13 +73,14 @@ class ApiService {
   // Fetch all blog posts
   async fetchBlogs(): Promise<BlogPost[]> {
     const url = `${API_BASE_URL}${API_ROUTES.BLOGS}`;
-    return this.fetchWithErrorHandling<BlogPost[]>(url);
+    const response = await this.fetchWithErrorHandling<BlogListResponse>(url);
+    return response.results;
   }
 
   // Fetch single blog post by slug
-  async fetchBlogBySlug(slug: string): Promise<BlogPost> {
+  async fetchBlogBySlug(slug: string): Promise<BlogPostDetail> {
     const url = `${API_BASE_URL}${API_ROUTES.BLOG_DETAIL(slug)}`;
-    return this.fetchWithErrorHandling<BlogPost>(url);
+    return this.fetchWithErrorHandling<BlogPostDetail>(url);
   }
 
   // Fetch all consultants/teachers

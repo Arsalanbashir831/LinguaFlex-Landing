@@ -9,17 +9,16 @@ import { Button } from "@/components/ui/button";
 import { BookOpen } from "lucide-react";
 
 export interface BlogCardPost {
-	id?: string;
+	id: number;
 	slug: string;
 	title: string;
-	excerpt: string;
+	meta_description: string; // Using as excerpt
 	thumbnail: string;
-	readTime: number;
-	authorName: string;
-	authorAvatar: string;
+	read_time: number;
+	author_name: string;
 	tags: string[];
-	datePublished: string;
-	views?: number;
+	published_at: string;
+	view_count: number;
 }
 
 interface BlogCardProps {
@@ -53,7 +52,7 @@ export function BlogCard({ post, showCta = false, showViews = false, className =
 				<div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent" />
 				<div className="absolute top-4 right-4">
 					<Badge className="bg-white/90 text-gray-700 hover:bg-white">
-						{post.readTime} min read
+						{post.read_time} min read
 					</Badge>
 				</div>
 			</div>
@@ -61,20 +60,19 @@ export function BlogCard({ post, showCta = false, showViews = false, className =
 			<CardContent className="p-6">
 				<div className="flex items-center mb-4">
 					<Avatar className="w-10 h-10 mr-3">
-						<AvatarImage src={post.authorAvatar} alt={post.authorName} />
 						<AvatarFallback className="bg-primary-100 text-primary-600 text-sm font-semibold">
-							{post.authorName.split(" ").map((n) => n[0]).join("")}
+							{post.author_name.split(" ").map((n) => n[0]).join("")}
 						</AvatarFallback>
 					</Avatar>
 					<div>
-						<p className="text-sm font-medium text-gray-900">{post.authorName}</p>
-						<p className="text-xs text-gray-500">{formatDate(post.datePublished)}</p>
+						<p className="text-sm font-medium text-gray-900">{post.author_name}</p>
+						<p className="text-xs text-gray-500">{formatDate(post.published_at)}</p>
 					</div>
 				</div>
 
 				<h3 className="text-lg font-semibold text-gray-900 mb-3 line-clamp-2 min-h-[3.5rem]">{post.title}</h3>
 
-				<p className="text-sm text-gray-600 mb-4 line-clamp-3 min-h-[4.5rem]">{post.excerpt}</p>
+				<p className="text-sm text-gray-600 mb-4 line-clamp-3 min-h-[4.5rem]">{post.meta_description}</p>
 
 				<div className="flex flex-wrap gap-1 mb-4 min-h-[2rem] items-start">
 					{post.tags.slice(0, 2).map((tag, index) => (
@@ -89,12 +87,12 @@ export function BlogCard({ post, showCta = false, showViews = false, className =
 					)}
 				</div>
 
-				{showViews && typeof post.views === "number" ? (
+				{showViews && (
 					<div className="flex items-center text-sm text-gray-500">
 						<BookOpen className="w-4 h-4 mr-1" />
-						{post.views.toLocaleString()} views
+						{post.view_count.toLocaleString()} views
 					</div>
-				) : null}
+				)}
 
 				{showCta ? (
 					<Link href={`/blog/${post.slug}`}>

@@ -8,6 +8,6 @@ export const APP_ROUTES = {
 
 export const API_ROUTES = {
     BLOGS: "/blogs/view/",
-    BLOG_DETAIL: (slug: string) => `/blogs/view/${slug}`,
+    BLOG_DETAIL: (slug: string) => `/blogs/view/${slug}/`,
     CONSULTANTS: "/consultants",
 }

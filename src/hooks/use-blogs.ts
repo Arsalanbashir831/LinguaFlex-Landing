@@ -1,7 +1,7 @@
 "use client";
 
 import { useQuery } from "@tanstack/react-query";
-import { apiService, QUERY_KEYS, type BlogPost } from "@/lib/api";
+import { apiService, QUERY_KEYS, type BlogPost, type BlogPostDetail } from "@/lib/api";
 
 // Hook for fetching all blogs
 export function useBlogs() {
@@ -11,7 +11,7 @@ export function useBlogs() {
     select: (data: BlogPost[]) => {
       // Sort blogs by date (newest first)
       return data.sort((a, b) => 
-        new Date(b.datePublished).getTime() - new Date(a.datePublished).getTime()
+        new Date(b.published_at).getTime() - new Date(a.published_at).getTime()
       );
     },
   });
