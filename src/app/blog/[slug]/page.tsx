@@ -35,7 +35,7 @@ export async function generateMetadata({ params }: BlogPageProps) {
         images: [post.thumbnail],
       },
     };
-  } catch (error) {
+  } catch {
     // Fallback metadata if API call fails
     return {
       title: 'Blog Post · Linguaflex Blog',

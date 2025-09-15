@@ -1,7 +1,7 @@
 "use client";
 
 import { useQuery } from "@tanstack/react-query";
-import { apiService, QUERY_KEYS, type BlogPost, type BlogPostDetail } from "@/lib/api";
+import { apiService, QUERY_KEYS, type BlogPost } from "@/lib/api";
 
 // Hook for fetching all blogs
 export function useBlogs() {

@@ -73,7 +73,7 @@ export interface Teacher {
   user_profile: UserProfile;
   qualification: string;
   experience_years: number;
-  certificates: any[];
+  certificates: string[];
   about: string;
 }
 

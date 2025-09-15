@@ -14,7 +14,7 @@ import { APP_ROUTES } from "@/constants/routes";
 
 
 // Helper function to generate tags from teacher data
-const generateTeacherTags = (teacher: any) => {
+const generateTeacherTags = (teacher: { user_profile: { country?: string }; experience_years: number; qualification?: string }) => {
   const tags = [];
   
   if (teacher.user_profile.country) {
