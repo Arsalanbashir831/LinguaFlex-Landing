@@ -88,7 +88,7 @@ export function Hero() {
                 </div>
               </div>
               
-              {/* Center microphone animation */}
+              {/* Center microphone animations */}
               <div className="relative z-10 w-48 h-48 flex items-center justify-center">
                 <div className="w-32 h-32">
                   <LottiePlayer 
