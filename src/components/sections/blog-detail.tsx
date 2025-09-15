@@ -95,7 +95,7 @@ export function BlogDetail({ slug }: BlogDetailProps) {
     return (
         <article className="min-h-screen bg-white">
             {/* Hero Image */}
-            <div className="relative h-[70vh] min-h-[400px] max-h-[600px] w-full">
+            <div className="relative h-[70vh] min-h-[400px] max-h-[600px] w-full bg-primary-600">
                 <Image
                     src={post.thumbnail}
                     alt={post.title}
@@ -104,7 +104,8 @@ export function BlogDetail({ slug }: BlogDetailProps) {
                     priority
                     sizes="100vw"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-primary-50/30 via-primary-50/10 to-transparent" />
+                {/* <div className="absolute inset-0 bg-gradient-to-t from-primary-50/30 via-primary-50/10 to-transparent" /> */}
+                <div className="absolute inset-0 bg-black/20" />
 
                 {/* Header Content Overlay */}
                 <div className="absolute inset-0 flex flex-col justify-end">
