@@ -3,6 +3,7 @@
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
 import type { Components } from "react-markdown";
+import Link from "next/link";
 
 interface MarkdownProps {
   content: string;
@@ -77,18 +78,18 @@ const markdownComponents: Components = {
     </p>
   ),
   a: ({ children, href }) => (
-    <a 
-      href={href} 
+    <Link
+      href={href || '#'}
       className="text-primary-600 hover:text-primary-700 underline underline-offset-2 transition-colors duration-200"
       target={href?.startsWith('http') ? '_blank' : undefined}
       rel={href?.startsWith('http') ? 'noopener noreferrer' : undefined}
     >
       {children}
-    </a>
+    </Link>
   ),
   code: ({ children, className }) => {
     const isInline = !className;
-    
+
     if (isInline) {
       return (
         <code className="text-primary-700 bg-primary-50 px-1.5 py-0.5 rounded text-sm font-mono">
@@ -96,7 +97,7 @@ const markdownComponents: Components = {
         </code>
       );
     }
-    
+
     return (
       <code className="block bg-gray-100 p-4 rounded-lg text-sm font-mono overflow-x-auto my-4">
         {children}

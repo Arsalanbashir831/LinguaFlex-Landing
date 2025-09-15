@@ -6,7 +6,7 @@ import { FeatureList } from "@/components/sections/feature-list";
 import { Reasons } from "@/components/sections/reasons";
 import { CTASplit } from "@/components/sections/cta-split";
 import { SiteFooter } from "@/components/sections/site-footer";
-import { appLinks } from "@/lib/app-links";
+import { APP_ROUTES } from "@/constants/routes";
 
 export default function Home() {
   const learnWithVoiceAI = [
@@ -84,14 +84,14 @@ export default function Home() {
       description: "Start learning a new language today with your personal AI tutor.",
       buttonText: "Get Started Free",
       buttonIcon: "rocket" as const,
-      href: appLinks.language
+      href: APP_ROUTES.LANGUAGE
     },
     rightCTA: {
       title: "For Teachers & Consultants",
       description: "Monetize your knowledge—post your gig and get discovered.",
       buttonText: "Join as Teacher",
       buttonIcon: "briefcase" as const,
-      href: appLinks.signup
+      href: APP_ROUTES.SIGN_UP
     }
   };
 

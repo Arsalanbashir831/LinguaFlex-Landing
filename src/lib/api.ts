@@ -38,15 +38,43 @@ export interface BlogListResponse {
   results: BlogPost[];
 }
 
-export interface Teacher {
+// Teacher/Consultant API response interfaces
+export interface User {
   id: string;
-  name: string;
-  headline: string;
-  rating: number;
-  specializations: string[];
-  pricePerSession: number;
-  profilePicture: string;
-  tags: string[];
+  email: string;
+  first_name: string;
+  last_name: string;
+  full_name: string;
+  role: string;
+  phone_number: string | null;
+  gender: string | null;
+  date_of_birth: string | null;
+  profile_picture: string | null;
+  created_at: string;
+}
+
+export interface UserProfile {
+  id: number;
+  user: User;
+  role: string;
+  bio: string;
+  city: string;
+  country: string;
+  postal_code: string;
+  status: string;
+  native_language: string;
+  learning_language: string;
+  created_at: string;
+  updated_at: string;
+}
+
+export interface Teacher {
+  id: number;
+  user_profile: UserProfile;
+  qualification: string;
+  experience_years: number;
+  certificates: any[];
+  about: string;
 }
 
 // API service functions

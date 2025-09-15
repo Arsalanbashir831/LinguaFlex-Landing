@@ -5,7 +5,7 @@ import { FeatureHero } from "@/components/sections/feature-hero";
 import { DetailedFeature } from "@/components/sections/detailed-feature";
 import { iconMap } from "@/lib/icons";
 import { Card, CardContent } from "@/components/ui/card";
-import { appLinks } from "@/lib/app-links";
+import { APP_ROUTES } from "@/constants/routes";
 
 // Import Lottie animations
 import tutorAnimation from "@/assets/lottie/tutor.json";
@@ -27,14 +27,14 @@ export default function FeaturesPage() {
       description: "Experience the power of AI-driven language learning with personalized feedback and real-time conversations.",
       buttonText: "Start Learning",
       buttonIcon: "microphone" as const,
-      href: appLinks.language
+      href: APP_ROUTES.LANGUAGE
     },
     rightCTA: {
       title: "Join as a Teacher/Consultant",
       description: "Share your expertise, build your reputation, and earn money by teaching or consulting on our platform.",
       buttonText: "Join as Teacher",
       buttonIcon: "briefcase" as const,
-      href: appLinks.signup
+      href: APP_ROUTES.SIGN_UP
     }
   };
 

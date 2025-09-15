@@ -4,6 +4,7 @@ import { motion } from "motion/react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { iconMap, type IconName } from "@/lib/icons";
+import Link from "next/link";
 
 interface CTASplitProps {
   leftCTA: {
@@ -45,7 +46,7 @@ export function CTASplit({ leftCTA, rightCTA, className = "" }: CTASplitProps) {
                 <p className="text-gray-600 mb-8 leading-relaxed">
                   {leftCTA.description}
                 </p>
-                <a href={leftCTA.href}>
+                <Link href={leftCTA.href}>
                   <Button 
                     size="lg" 
                     className="bg-primary-500 hover:bg-primary-600 text-white px-8 py-4"
@@ -53,7 +54,7 @@ export function CTASplit({ leftCTA, rightCTA, className = "" }: CTASplitProps) {
                     <LeftIcon className="w-5 h-5 mr-2" />
                     {leftCTA.buttonText}
                   </Button>
-                </a>
+                </Link>
               </CardContent>
             </Card>
           </motion.div>
@@ -72,7 +73,7 @@ export function CTASplit({ leftCTA, rightCTA, className = "" }: CTASplitProps) {
                 <p className="text-gray-600 mb-8 leading-relaxed">
                   {rightCTA.description}
                 </p>
-                <a href={rightCTA.href}>
+                <Link href={rightCTA.href}>
                   <Button 
                     variant="outline" 
                     size="lg"
@@ -81,7 +82,7 @@ export function CTASplit({ leftCTA, rightCTA, className = "" }: CTASplitProps) {
                     <RightIcon className="w-5 h-5 mr-2" />
                     {rightCTA.buttonText}
                   </Button>
-                </a>
+                </Link>
               </CardContent>
             </Card>
           </motion.div>

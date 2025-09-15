@@ -6,7 +6,8 @@ import { iconMap } from "@/lib/icons";
 import { LottiePlayer } from "@/components/ui/lottie-player";
 import micAnimation from "@/assets/lottie/mic.json";
 import flagAnimation from "@/assets/lottie/flags.json";
-import { appLinks } from "@/lib/app-links";
+import { APP_ROUTES } from "@/constants/routes";
+import Link from "next/link";
 
 const MicrophoneIcon = iconMap.microphone;
 const BriefcaseIcon = iconMap.briefcase;
@@ -46,7 +47,7 @@ export function Hero() {
               transition={{ duration: 0.6, delay: 0.4 }}
               className="mt-8 flex flex-col sm:flex-row gap-4 justify-center lg:justify-start"
             >
-              <a href={appLinks.language}>
+              <Link href={APP_ROUTES.LANGUAGE}>
               <Button 
                 size="lg" 
                 className="bg-primary-500 hover:bg-primary-600 text-white px-8 py-4 text-lg"
@@ -54,8 +55,8 @@ export function Hero() {
                 <MicrophoneIcon className="w-5 h-5 mr-2" />
                 Start Learning
               </Button>
-              </a>
-              <a href={appLinks.signup}>
+              </Link>
+              <Link href={APP_ROUTES.SIGN_UP}>
               <Button 
                 variant="outline" 
                 size="lg"
@@ -64,7 +65,7 @@ export function Hero() {
                 <BriefcaseIcon className="w-5 h-5 mr-2" />
                 Become a Teacher
               </Button>
-              </a>
+              </Link>
             </motion.div>
           </motion.div>
           

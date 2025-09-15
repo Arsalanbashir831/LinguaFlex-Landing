@@ -208,9 +208,11 @@ export function BlogDetail({ slug }: BlogDetailProps) {
                                         Expert content creator sharing insights and experiences in language learning and business growth.
                                     </p>
 
-                                    <Button className="w-full bg-primary-600 hover:bg-primary-700">
-                                        Book Consultation
-                                    </Button>
+                                    <Link href={APP_ROUTES.SIGN_IN}>
+                                        <Button className="w-full bg-primary-600 hover:bg-primary-700">
+                                            Book Consultation
+                                        </Button>
+                                    </Link>
                                 </CardContent>
                             </Card>
 

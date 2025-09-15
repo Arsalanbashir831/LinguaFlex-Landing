@@ -4,19 +4,19 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { Button } from "@/components/ui/button";
 import { Logo } from "@/components/common/logo";
-import { appLinks } from "@/lib/app-links";
+import { APP_ROUTES } from "@/constants/routes";
 
 const navigation = [
-  { name: "Home", href: "/" },
-  { name: "Features", href: "/features" },
-  { name: "Consultants", href: "/consultants" },
+  { name: "Home", href: APP_ROUTES.HOME },
+  { name: "Features", href: APP_ROUTES.FEATURES },
+  { name: "Consultants", href: APP_ROUTES.CONSULTANTS },
 ];
 
 export function Navigation() {
   const pathname = usePathname();
 
   const isActive = (href: string) => {
-    if (href === "/") {
+    if (href === APP_ROUTES.HOME) {
       return pathname === "/";
     }
     return pathname.startsWith(href);
@@ -53,16 +53,16 @@ export function Navigation() {
           </nav>
           
           <div className="flex items-center space-x-4">
-            <a href={appLinks.signIn}>
+            <Link href={APP_ROUTES.SIGN_IN}>
               <Button variant="ghost" className="text-primary-700 hover:bg-primary-50">
                 Sign In
               </Button>
-            </a>
-            <a href={appLinks.language}>
+            </Link>
+            <Link href={APP_ROUTES.LANGUAGE}>
               <Button className="bg-primary-600 hover:bg-primary-700 text-white">
                 Get Started
               </Button>
-            </a>
+            </Link>
           </div>
         </div>
       </div>
