@@ -1,6 +1,6 @@
 import { Navigation } from "@/components/layout/navigation";
 import { Hero } from "@/components/sections/hero";
-import { WhatIsLinguaflex } from "@/components/sections/what-is-linguaflex";
+import { WhatIsParlezHub } from "@/components/sections/what-is-parlezhub";
 import { FeatureGrid } from "@/components/sections/feature-grid";
 import { FeatureList } from "@/components/sections/feature-list";
 import { Reasons } from "@/components/sections/reasons";
@@ -100,7 +100,7 @@ export default function Home() {
       <Navigation />
       <main>
         <Hero />
-        <WhatIsLinguaflex />
+        <WhatIsParlezHub />
         <FeatureGrid 
           title="Learn with Voice AI" 
           features={learnWithVoiceAI}
@@ -112,7 +112,7 @@ export default function Home() {
           className="bg-white"
         />
         <Reasons 
-          title="Why Choose Linguaflex?" 
+          title="Why Choose ParlezHub?" 
           reasons={whyChooseReasons}
           className="bg-gray-50"
         />

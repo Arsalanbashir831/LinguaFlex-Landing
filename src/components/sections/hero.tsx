@@ -35,7 +35,7 @@ export function Hero() {
               transition={{ duration: 0.6, delay: 0.2 }}
               className="mt-6 text-lg sm:text-xl text-gray-600 max-w-3xl"
             >
-              Linguaflex helps you learn languages interactively through a voice AI tutor, 
+              ParlezHub helps you learn languages interactively through a voice AI tutor, 
               while also providing a marketplace for teachers, coaches, and consultants to 
               share their skills, post gigs, and earn—just like freelancing platforms but 
               powered by AI chat.

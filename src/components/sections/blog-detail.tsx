@@ -320,7 +320,7 @@ export function BlogDetail({ slug }: BlogDetailProps) {
             Ready to Transform Your Career?
           </h2>
           <p className="text-primary-100 text-lg mb-8 max-w-2xl mx-auto">
-                        Connect with {post.author_name} and other world-class consultants on Linguaflex.
+                        Connect with {post.author_name} and other world-class consultants on ParlezHub.
                         Start your journey to building a successful consulting practice.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">

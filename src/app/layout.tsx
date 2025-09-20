@@ -3,8 +3,8 @@ import "./globals.css";
 import { QueryProvider } from "@/providers/query-provider";
 
 export const metadata: Metadata = {
-  title: "Your AI-Powered Voice Agent for Learning & Earning · Linguaflex",
-  description: "Linguaflex is an AI-powered voice tutor and freelance marketplace. Learn languages via natural conversations and earn by teaching or consulting—all in one platform.",
+  title: "Your AI-Powered Voice Agent for Learning & Earning · ParlezHub",
+  description: "ParlezHub is an AI-powered voice tutor and freelance marketplace. Learn languages via natural conversations and earn by teaching or consulting—all in one platform.",
   keywords: "AI tutor, voice AI, language learning, freelance teachers, consultants, marketplace, learn and earn",
 };
 

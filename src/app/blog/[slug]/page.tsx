@@ -17,7 +17,7 @@ export async function generateMetadata({ params }: BlogPageProps) {
     const post = await apiService.fetchBlogBySlug(resolvedParams.slug);
     
     return {
-      title: `${post.title} · Linguaflex Blog`,
+      title: `${post.title} · ParlezHub Blog`,
       description: post.meta_description,
       openGraph: {
         title: post.title,
@@ -38,8 +38,8 @@ export async function generateMetadata({ params }: BlogPageProps) {
   } catch {
     // Fallback metadata if API call fails
     return {
-      title: 'Blog Post · Linguaflex Blog',
-      description: "Expert insights and success stories from world-class consultants and language experts on Linguaflex.",
+      title: 'Blog Post · ParlezHub Blog',
+      description: "Expert insights and success stories from world-class consultants and language experts on ParlezHub.",
     };
   }
 }
