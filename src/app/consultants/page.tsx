@@ -8,7 +8,7 @@ import { Reasons } from "@/components/sections/reasons";
 import { APP_ROUTES } from "@/constants/routes";
 
 export const metadata = {
-  title: "Find Your Teacher. Learn from the Best · ParlezHub",
+  title: "Find Your Consultant. Learn from the Best · ParlezHub",
   description: "Browse through our community of language teachers, coaches, and consultants. Hire experts for 1-on-1 lessons, or explore their blog posts to learn from their shared experiences.",
 };
 

@@ -69,12 +69,14 @@ export interface UserProfile {
 }
 
 export interface Teacher {
-  id: number;
-  user_profile: UserProfile;
+  id: string;
+  first_name: string;
+  last_name: string;
+  profile_picture: string | null;
+  bio: string;
+  about: string;
   qualification: string;
   experience_years: number;
-  certificates: string[];
-  about: string;
 }
 
 // API service functions
@@ -112,8 +114,13 @@ class ApiService {
   }
 
   // Fetch all consultants/teachers
-  async fetchConsultants(): Promise<Teacher[]> {
-    const url = `${API_BASE_URL}${API_ROUTES.CONSULTANTS}`;
+  async fetchConsultants(limit?: number, offset?: number): Promise<Teacher[]> {
+    let url = `${API_BASE_URL}${API_ROUTES.CONSULTANTS}`;
+    const params = new URLSearchParams();
+    if (limit) params.append('limit', limit.toString());
+    if (offset) params.append('offset', offset.toString());
+    if (params.toString()) url += `?${params.toString()}`;
+    
     return this.fetchWithErrorHandling<Teacher[]>(url);
   }
 }

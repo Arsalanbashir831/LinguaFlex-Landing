@@ -20,7 +20,7 @@ export function ConsultantsHero() {
             className="text-center lg:text-left"
           >
             <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-gray-900 leading-tight">
-              Find Your Teacher.{" "}
+              Find Your Consultant.{" "}
               <span className="text-primary-600">Learn from the Best.</span>
             </h1>
 
@@ -46,7 +46,7 @@ export function ConsultantsHero() {
                 className="bg-primary-600 hover:bg-primary-700 text-white px-8 py-4 text-lg"
               >
                 <SearchIcon className="w-5 h-5 mr-2" />
-                Browse Teachers
+                Browse Consultants
               </Button>
             </motion.div>
           </motion.div>
