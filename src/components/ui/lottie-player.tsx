@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import Lottie from "lottie-react";
 
 interface LottiePlayerProps {
@@ -16,16 +16,15 @@ export function LottiePlayer({
   loop = true,
   autoplay = true,
 }: LottiePlayerProps) {
-  const [shouldAutoplay, setShouldAutoplay] = useState(autoplay);
-
-  useEffect(() => {
-    // Respect prefers-reduced-motion
-    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    
-    if (prefersReducedMotion) {
-      setShouldAutoplay(false);
-    }
-  }, []);
+  // Derive autoplay once on mount via a lazy initializer — avoids setting state
+  // inside a useEffect (which triggers a cascading render).
+  const [shouldAutoplay] = useState<boolean>(() => {
+    if (typeof window === "undefined") return autoplay;
+    const prefersReducedMotion = window.matchMedia(
+      "(prefers-reduced-motion: reduce)"
+    ).matches;
+    return prefersReducedMotion ? false : autoplay;
+  });
 
   return (
     <Lottie

@@ -1,16 +1,19 @@
-import { dirname } from "path";
-import { fileURLToPath } from "url";
-import { FlatCompat } from "@eslint/eslintrc";
+import { createRequire } from 'module';
+import prettierConfig from 'eslint-config-prettier';
 
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = dirname(__filename);
+const require = createRequire(import.meta.url);
 
-const compat = new FlatCompat({
-  baseDirectory: __dirname,
-});
+// eslint-config-next already ships native flat config arrays — no FlatCompat needed.
+const nextCoreWebVitals = require('eslint-config-next/core-web-vitals');
+const nextTypescript = require('eslint-config-next/typescript');
 
 const eslintConfig = [
-  ...compat.extends("next/core-web-vitals", "next/typescript"),
+  {
+    ignores: ['.next/**', 'node_modules/**', 'dist/**', 'build/**', 'out/**', 'scratch/**'],
+  },
+  ...nextCoreWebVitals,
+  ...nextTypescript,
+  prettierConfig,
 ];
 
 export default eslintConfig;
