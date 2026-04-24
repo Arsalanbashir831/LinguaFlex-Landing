@@ -41,15 +41,21 @@ export function BlogCard({ post, showCta = false, showViews = false, className =
 	return (
 		<Card className={`bg-white border-primary-100/60 rounded-2xl shadow-sm hover:shadow-lg transition-all duration-300 h-full overflow-hidden py-0 ${className}`}>
 			{/* Thumbnail Image */}
-			<div className="relative h-48 w-full">
-				<Image
-					src={post.thumbnail}
-					alt={post.title}
-					fill
-					className="object-cover"
-					sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-				/>
-				<div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent" />
+			<div className="relative h-48 w-full bg-primary-50 flex items-center justify-center overflow-hidden">
+				{post.thumbnail ? (
+					<Image
+						src={post.thumbnail}
+						alt={post.title}
+						fill
+						className="object-cover"
+						sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+					/>
+				) : (
+					<div className="text-primary-200 font-bold text-xl opacity-20 select-none">
+						LinguaFlex
+					</div>
+				)}
+				<div className="absolute inset-0 bg-linear-to-t from-black/20 to-transparent" />
 				<div className="absolute top-4 right-4">
 					<Badge className="bg-white/90 text-gray-700 hover:bg-white">
 						{post.read_time} min read
@@ -70,11 +76,11 @@ export function BlogCard({ post, showCta = false, showViews = false, className =
 					</div>
 				</div>
 
-				<h3 className="text-lg font-semibold text-gray-900 mb-3 line-clamp-2 min-h-[3.5rem]">{post.title}</h3>
+				<h3 className="text-lg font-semibold text-gray-900 mb-3 line-clamp-2 min-h-14">{post.title}</h3>
 
-				<p className="text-sm text-gray-600 mb-4 line-clamp-3 min-h-[4.5rem]">{post.meta_description}</p>
+				<p className="text-sm text-gray-600 mb-4 line-clamp-3 min-h-18">{post.meta_description}</p>
 
-				<div className="flex flex-wrap gap-1 mb-4 min-h-[2rem] items-start">
+				<div className="flex flex-wrap gap-1 mb-4 min-h-8 items-start">
 					{post.tags.slice(0, 2).map((tag, index) => (
 						<Badge key={index} variant="secondary" className="text-xs bg-primary-50 text-primary-700 hover:bg-primary-100">
 							{tag}
