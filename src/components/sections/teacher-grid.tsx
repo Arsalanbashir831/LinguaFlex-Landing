@@ -1,15 +1,16 @@
 'use client'
 
-import { useState, useMemo } from "react";
+import { useState, useMemo, useEffect } from "react";
 import { motion, AnimatePresence } from "motion/react";
 import { Card, CardContent } from "@/components/ui/card";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
 import { Alert, AlertDescription } from "@/components/ui/alert";
-import { AlertCircle, RefreshCw, ChevronDown } from "lucide-react";
+import { AlertCircle, RefreshCw, ChevronDown, Search as SearchIcon, Loader2 } from "lucide-react";
 import Link from "next/link";
-import { useTeachers } from "@/hooks/use-teachers";
+import { useTeachersInfinite } from "@/hooks/use-teachers";
 import { TeacherGridSkeleton } from "./teacher-grid-skeleton";
 import { APP_ROUTES } from "@/constants/routes";
 
@@ -20,37 +21,62 @@ import { Teacher } from "@/lib/api";
 const generateTeacherTags = (teacher: Teacher) => {
   const tags = [];
 
-  // If country existed in the API, we'd add it here. 
-  // Based on current API response, it's missing.
-
   if (teacher.experience_years > 0) {
     tags.push(`${teacher.experience_years}+ years exp`);
   }
 
   if (teacher.qualification) {
-    // Extract degree type from qualification
     const degreeMatch = teacher.qualification.match(/(Bachelor|Master|PhD|Doctorate)/i);
     if (degreeMatch) {
       tags.push(degreeMatch[1]);
     }
   }
 
-  return tags.slice(0, 2); // Limit to 2 tags for clean UI
+  return tags.slice(0, 2);
 };
 
+const CATEGORIES = [
+  { label: "All", value: undefined },
+  { label: "Language", value: "language" },
+  { label: "Astrology", value: "astrology" },
+  { label: "General", value: "general" },
+];
+
 export function TeacherGrid() {
-  const { data: teachers, isLoading, error, refetch } = useTeachers();
-  const [visibleCount, setVisibleCount] = useState(3);
+  const [searchTerm, setSearchTerm] = useState("");
+  const [debouncedSearch, setDebouncedSearch] = useState("");
+  const [selectedCategory, setSelectedCategory] = useState<string | undefined>(undefined);
 
-  const visibleTeachers = useMemo(() => {
-    if (!teachers) return [];
-    return teachers.slice(0, visibleCount);
-  }, [teachers, visibleCount]);
+  // Debounce search term
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setDebouncedSearch(searchTerm);
+    }, 500);
+    return () => clearTimeout(timer);
+  }, [searchTerm]);
 
-  const hasMore = teachers ? visibleCount < teachers.length : false;
+  const {
+    data,
+    isLoading,
+    error,
+    fetchNextPage,
+    hasNextPage,
+    isFetchingNextPage,
+    refetch
+  } = useTeachersInfinite({
+    search: debouncedSearch || undefined,
+    gig_category: selectedCategory,
+    page_size: 3,
+  });
+
+  const teachers = useMemo(() => {
+    return data?.pages.flatMap(page => page.results) || [];
+  }, [data]);
 
   const handleLoadMore = () => {
-    setVisibleCount(prev => prev + 3);
+    if (hasNextPage && !isFetchingNextPage) {
+      fetchNextPage();
+    }
   };
 
   const fadeInUp = {
@@ -70,15 +96,52 @@ export function TeacherGrid() {
   return (
     <section id="teachers" className="py-20 bg-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <motion.h2
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-          className="text-3xl sm:text-4xl font-bold text-gray-900 text-center mb-16"
-        >
-          Featured Consultants
-        </motion.h2>
+        <div className="text-center mb-12">
+          <motion.h2
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+            className="text-3xl sm:text-4xl font-bold text-gray-900 mb-8"
+          >
+            Featured Consultants
+          </motion.h2>
+
+          {/* Search and Filter Section */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+            className="flex flex-col md:flex-row gap-4 items-center justify-center max-w-4xl mx-auto"
+          >
+            <div className="relative w-full md:w-96">
+              <SearchIcon className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-4 h-4" />
+              <Input
+                type="text"
+                placeholder="Search by name..."
+                value={searchTerm}
+                onChange={(e) => setSearchTerm(e.target.value)}
+                className="pl-10 h-11 bg-gray-50 border-gray-200 focus:bg-white transition-all rounded-xl"
+              />
+            </div>
+            <div className="flex flex-wrap justify-center gap-2">
+              {CATEGORIES.map((cat) => (
+                <Button
+                  key={cat.label}
+                  variant={selectedCategory === cat.value ? "default" : "outline"}
+                  onClick={() => setSelectedCategory(cat.value)}
+                  className={`rounded-full h-11 px-6 transition-all ${selectedCategory === cat.value
+                      ? "bg-primary-600 text-white hover:bg-primary-700 shadow-md"
+                      : "border-gray-200 text-gray-600 hover:bg-gray-50"
+                    }`}
+                >
+                  {cat.label}
+                </Button>
+              ))}
+            </div>
+          </motion.div>
+        </div>
 
         {/* Loading State */}
         {isLoading && (
@@ -127,7 +190,7 @@ export function TeacherGrid() {
             >
               <div className="flex flex-wrap justify-center gap-8 max-w-7xl mx-auto">
                 <AnimatePresence mode="popLayout">
-                  {visibleTeachers.map((teacher) => {
+                  {teachers.map((teacher) => {
                     const tags = generateTeacherTags(teacher);
 
                     return (
@@ -214,7 +277,7 @@ export function TeacherGrid() {
             </motion.div>
 
             {/* Load More Button */}
-            {hasMore && (
+            {hasNextPage && (
               <motion.div
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
@@ -222,12 +285,22 @@ export function TeacherGrid() {
               >
                 <Button
                   onClick={handleLoadMore}
+                  disabled={isFetchingNextPage}
                   variant="outline"
                   size="lg"
                   className="rounded-full px-8 border-primary-200 text-primary-700 hover:bg-primary-50 hover:border-primary-300 transition-all duration-300 group"
                 >
-                  Load More Consultants
-                  <ChevronDown className="ml-2 h-4 w-4 group-hover:translate-y-1 transition-transform duration-300" />
+                  {isFetchingNextPage ? (
+                    <>
+                      <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+                      Loading...
+                    </>
+                  ) : (
+                    <>
+                      Load More Consultants
+                      <ChevronDown className="ml-2 h-4 w-4 group-hover:translate-y-1 transition-transform duration-300" />
+                    </>
+                  )}
                 </Button>
               </motion.div>
             )}

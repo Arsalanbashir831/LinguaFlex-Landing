@@ -57,18 +57,18 @@ export function Hero() {
                 </Button>
               </Link>
 
-              <div className="flex items-center gap-1 p-1.5 bg-white/80 backdrop-blur-sm border border-primary-100 rounded-full shadow-sm w-fit mx-auto lg:mx-0">
-                <span className="text-sm font-medium text-gray-500 pl-4 pr-2 whitespace-nowrap hidden sm:inline">Join as:</span>
+              <div className="flex items-center gap-1 p-1.5 bg-primary-600 backdrop-blur-sm border border-primary-100 rounded-full shadow-sm w-fit mx-auto lg:mx-0">
+                <span className="text-sm font-medium text-white pl-4 pr-2 whitespace-nowrap hidden sm:inline">Join as:</span>
                 <div className="flex items-center gap-1">
                   <Link href={APP_ROUTES.SIGN_UP}>
-                    <Button variant="ghost" size="sm" className="rounded-full hover:bg-primary-50 text-primary-700 font-medium px-4 h-9">
+                    <Button variant="ghost" size="sm" className="rounded-full hover:bg-primary-50 text-white font-medium px-4 h-9">
                       <BriefcaseIcon className="w-4 h-4 mr-2" />
                       Teacher
                     </Button>
                   </Link>
                   <div className="w-px h-4 bg-primary-100 hidden sm:block"></div>
                   <Link href={APP_ROUTES.SIGN_UP}>
-                    <Button variant="ghost" size="sm" className="rounded-full hover:bg-primary-50 text-primary-700 font-medium px-4 h-9">
+                    <Button variant="ghost" size="sm" className="rounded-full hover:bg-primary-50 text-white font-medium px-4 h-9">
                       <StarIcon className="w-4 h-4 mr-2" />
                       Astrologer
                     </Button>

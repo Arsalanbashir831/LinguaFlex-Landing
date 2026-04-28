@@ -79,6 +79,13 @@ export interface Teacher {
   experience_years: number;
 }
 
+export interface TeacherListResponse {
+  count: number;
+  next: string | null;
+  previous: string | null;
+  results: Teacher[];
+}
+
 // API service functions
 class ApiService {
   private async fetchWithErrorHandling<T>(url: string): Promise<T> {
@@ -114,14 +121,22 @@ class ApiService {
   }
 
   // Fetch all consultants/teachers
-  async fetchConsultants(limit?: number, offset?: number): Promise<Teacher[]> {
+  async fetchConsultants(params?: {
+    page?: number;
+    page_size?: number;
+    search?: string;
+    gig_category?: string;
+  }): Promise<TeacherListResponse> {
     let url = `${API_BASE_URL}${API_ROUTES.CONSULTANTS}`;
-    const params = new URLSearchParams();
-    if (limit) params.append('limit', limit.toString());
-    if (offset) params.append('offset', offset.toString());
-    if (params.toString()) url += `?${params.toString()}`;
+    const urlParams = new URLSearchParams();
+    if (params?.page) urlParams.append('page', params.page.toString());
+    if (params?.page_size) urlParams.append('page_size', params.page_size.toString());
+    if (params?.search) urlParams.append('search', params.search);
+    if (params?.gig_category) urlParams.append('gig_category', params.gig_category);
     
-    return this.fetchWithErrorHandling<Teacher[]>(url);
+    if (urlParams.toString()) url += `?${urlParams.toString()}`;
+    
+    return this.fetchWithErrorHandling<TeacherListResponse>(url);
   }
 }
 
@@ -131,6 +146,6 @@ export const apiService = new ApiService();
 export const QUERY_KEYS = {
   BLOGS: ['blogs'] as const,
   BLOG_DETAIL: (slug: string) => ['blog', slug] as const,
-  CONSULTANTS: ['consultants'] as const,
+  CONSULTANTS: (params?: any) => ['consultants', params] as const,
 } as const;
 
