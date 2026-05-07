@@ -119,7 +119,7 @@ export function BlogDetail({ slug }: BlogDetailProps) {
             >
 
               <div className="flex flex-wrap gap-2 mb-6">
-                {post.tags.map((tag, index) => (
+                {(post.tags || []).map((tag, index) => (
                   <Badge
                     key={index}
                     className="bg-primary-500/20 backdrop-blur-sm text-white border-white/30 hover:bg-white/30"
@@ -141,7 +141,7 @@ export function BlogDetail({ slug }: BlogDetailProps) {
                 <div className="flex items-center">
                   <Avatar className="w-12 h-12 mr-4 border-2 border-white/20">
                     <AvatarFallback className="bg-primary-100 text-primary-700 font-semibold">
-                      {post.author_name.split(' ').map(n => n[0]).join('')}
+                      {(post.author_name || 'Anonymous').split(' ').map(n => n[0]).join('')}
                     </AvatarFallback>
                   </Avatar>
                   <div>
@@ -161,7 +161,7 @@ export function BlogDetail({ slug }: BlogDetailProps) {
                   </div>
                   <div className="flex items-center">
                     <BookOpen className="w-4 h-4 mr-1" />
-                    {post.view_count.toLocaleString()} views
+                    {(post.view_count ?? 0).toLocaleString()} views
                   </div>
                 </div>
               </div>
@@ -197,7 +197,7 @@ export function BlogDetail({ slug }: BlogDetailProps) {
                   <div className="flex items-center mb-4">
                     <Avatar className="w-16 h-16 mr-4">
                       <AvatarFallback className="bg-primary-100 text-primary-700 font-semibold text-lg">
-                        {post.author_name.split(' ').map(n => n[0]).join('')}
+                        {(post.author_name || 'Anonymous').split(' ').map(n => n[0]).join('')}
                       </AvatarFallback>
                     </Avatar>
                     <div>
@@ -223,7 +223,7 @@ export function BlogDetail({ slug }: BlogDetailProps) {
                 <CardContent className="p-6">
                   <h3 className="font-semibold text-gray-900 mb-4">Related Topics</h3>
                   <div className="flex flex-wrap gap-2">
-                    {post.tags.map((tag, index) => (
+                    {(post.tags || []).map((tag, index) => (
                       <Badge
                         key={index}
                         variant="secondary"

@@ -67,7 +67,7 @@ export function BlogCard({ post, showCta = false, showViews = false, className =
 				<div className="flex items-center mb-4">
 					<Avatar className="w-10 h-10 mr-3">
 						<AvatarFallback className="bg-primary-100 text-primary-600 text-sm font-semibold">
-							{post.author_name.split(" ").map((n) => n[0]).join("")}
+							{(post.author_name || "Anonymous").split(" ").map((n) => n[0]).join("")}
 						</AvatarFallback>
 					</Avatar>
 					<div>
@@ -81,14 +81,14 @@ export function BlogCard({ post, showCta = false, showViews = false, className =
 				<p className="text-sm text-gray-600 mb-4 line-clamp-3 min-h-18">{post.meta_description}</p>
 
 				<div className="flex flex-wrap gap-1 mb-4 min-h-8 items-start">
-					{post.tags.slice(0, 2).map((tag, index) => (
+					{(post.tags || []).slice(0, 2).map((tag, index) => (
 						<Badge key={index} variant="secondary" className="text-xs bg-primary-50 text-primary-700 hover:bg-primary-100">
 							{tag}
 						</Badge>
 					))}
-					{post.tags.length > 2 && (
+					{(post.tags || []).length > 2 && (
 						<Badge variant="secondary" className="text-xs bg-gray-100 text-gray-600">
-							+{post.tags.length - 2}
+							+{(post.tags || []).length - 2}
 						</Badge>
 					)}
 				</div>
@@ -96,7 +96,7 @@ export function BlogCard({ post, showCta = false, showViews = false, className =
 				{showViews && (
 					<div className="flex items-center text-sm text-gray-500">
 						<BookOpen className="w-4 h-4 mr-1" />
-						{post.view_count.toLocaleString()} views
+						{(post.view_count ?? 0).toLocaleString()} views
 					</div>
 				)}
 
