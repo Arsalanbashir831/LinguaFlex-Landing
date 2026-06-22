@@ -16,8 +16,8 @@ import communityAnimation from "@/assets/lottie/community.json";
 import securityAnimation from "@/assets/lottie/security.json";
 
 export const metadata = {
-  title: "Features - What Makes ParlezHub Unique · ParlezHub",
-  description: "Discover ParlezHub's powerful features: AI voice tutor, built-in chat system, freelance marketplace, personalized learning dashboard, global community, and secure payments.",
+  title: "Features - What Makes Shakti Wheel Unique · Shakti Wheel",
+  description: "Discover Shakti Wheel's powerful features: AI voice tutor, built-in chat system, freelance marketplace, personalized learning dashboard, global community, and secure payments.",
 };
 
 export default function FeaturesPage() {
@@ -134,7 +134,7 @@ export default function FeaturesPage() {
                 </div>
                 <h3 className="text-2xl font-bold mb-4">All-in-One Platform</h3>
                 <p className="text-primary-100 text-lg">
-                  No need to juggle multiple apps—ParlezHub combines learning + freelancing + communication in one place.
+                  No need to juggle multiple apps—Shakti Wheel combines learning + freelancing + communication in one place.
                 </p>
               </CardContent>
             </Card>

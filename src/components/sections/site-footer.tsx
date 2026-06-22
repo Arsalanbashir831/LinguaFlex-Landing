@@ -86,7 +86,7 @@ export function SiteFooter() {
         
         <div className="border-t border-primary-200 mt-8 py-4">
           <p className="text-center text-primary-500 text-sm">
-            © 2025 ParlezHub. All Rights Reserved.
+            © 2025 Shakti Wheel. All Rights Reserved.
           </p>
         </div>
       </div>

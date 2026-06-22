@@ -11,7 +11,7 @@ const SpeechBubbleIcon = iconMap["speech-bubble"];
 const DollarIcon = iconMap.dollar;
 const SparklesIcon = iconMap.star2;
 
-export function WhatIsParlezHub() {
+export function WhatIsShaktiWheel() {
   const fadeInUp = {
     initial: { opacity: 0, y: 20 },
     animate: { opacity: 1, y: 0 },
@@ -79,7 +79,7 @@ export function WhatIsParlezHub() {
           >
             What is{" "}
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary-600 to-primary-500">
-              ParlezHub
+              Shakti Wheel
             </span>
             ?
           </motion.h2>
@@ -89,7 +89,7 @@ export function WhatIsParlezHub() {
             className="max-w-4xl mx-auto"
           >
             <p className="text-xl text-gray-600 leading-relaxed mb-8">
-              ParlezHub is an <span className="font-semibold text-primary-600">AI-powered voice agent</span> that makes 
+              Shakti Wheel is an <span className="font-semibold text-primary-600">AI-powered voice agent</span> that makes 
               learning natural and interactive. Our AI helps you learn new languages through real conversations, 
               correcting your pronunciation, grammar, and fluency in real time.
             </p>

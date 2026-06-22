@@ -8,7 +8,7 @@ import { Reasons } from "@/components/sections/reasons";
 import { APP_ROUTES } from "@/constants/routes";
 
 export const metadata = {
-  title: "Find Your Consultant. Learn from the Best · ParlezHub",
+  title: "Find Your Consultant. Learn from the Best · Shakti Wheel",
   description: "Browse through our community of language teachers, coaches, and consultants. Hire experts for 1-on-1 lessons, or explore their blog posts to learn from their shared experiences.",
 };
 
@@ -46,7 +46,7 @@ export default function ConsultantsPage() {
     },
     rightCTA: {
       title: "For Teachers",
-      description: "Join ParlezHub to share your expertise, publish your blog posts, and earn.",
+      description: "Join Shakti Wheel to share your expertise, publish your blog posts, and earn.",
       buttonText: "Become a Teacher",
       buttonIcon: "briefcase" as const,
       href: APP_ROUTES.SIGN_UP
@@ -61,7 +61,7 @@ export default function ConsultantsPage() {
         <TeacherGrid />
         <BlogList />
         <Reasons 
-          title="Why Learn from ParlezHub Teachers?"
+          title="Why Learn from Shakti Wheel Teachers?"
           reasons={whyLearnReasons}
           className="bg-primary-50"
         />

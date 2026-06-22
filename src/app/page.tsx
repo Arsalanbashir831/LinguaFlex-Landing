@@ -1,6 +1,6 @@
 import { Navigation } from "@/components/layout/navigation";
 import { Hero } from "@/components/sections/hero";
-import { WhatIsParlezHub } from "@/components/sections/what-is-parlezhub";
+import { WhatIsShaktiWheel } from "@/components/sections/what-is-shakti-wheel";
 import { FeatureGrid } from "@/components/sections/feature-grid";
 import { FeatureList } from "@/components/sections/feature-list";
 import { Reasons } from "@/components/sections/reasons";
@@ -100,7 +100,7 @@ export default function Home() {
       <Navigation />
       <main>
         <Hero />
-        <WhatIsParlezHub />
+        <WhatIsShaktiWheel />
         <FeatureGrid 
           title="Learn with Voice AI" 
           features={learnWithVoiceAI}
@@ -112,7 +112,7 @@ export default function Home() {
           className="bg-white"
         />
         <Reasons 
-          title="Why Choose ParlezHub?" 
+          title="Why Choose Shakti Wheel?" 
           reasons={whyChooseReasons}
           className="bg-gray-50"
         />
