@@ -58,9 +58,14 @@ export function Navigation() {
                 Sign In
               </Button>
             </Link>
-            <Link href={APP_ROUTES.LANGUAGE}>
+            <Link href={APP_ROUTES.CONSULTANT_CTA} className="hidden lg:block">
+              <Button variant="outline" className="border-primary-200 text-primary-700 hover:bg-primary-50">
+                Join as Consultant
+              </Button>
+            </Link>
+            <Link href={APP_ROUTES.STUDENT_CTA}>
               <Button className="bg-primary-600 hover:bg-primary-700 text-white">
-                Get Started
+                I Want to Learn
               </Button>
             </Link>
           </div>

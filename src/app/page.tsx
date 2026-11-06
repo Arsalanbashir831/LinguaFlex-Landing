@@ -1,12 +1,25 @@
 import { Navigation } from "@/components/layout/navigation";
 import { Hero } from "@/components/sections/hero";
-import { WhatIsShaktiWheel } from "@/components/sections/what-is-shakti-wheel";
+import { WhatIsParlezhub } from "@/components/sections/what-is-parlezhub";
 import { FeatureGrid } from "@/components/sections/feature-grid";
 import { FeatureList } from "@/components/sections/feature-list";
 import { Reasons } from "@/components/sections/reasons";
 import { CTASplit } from "@/components/sections/cta-split";
 import { SiteFooter } from "@/components/sections/site-footer";
 import { APP_ROUTES } from "@/constants/routes";
+import type { Metadata } from "next";
+import { absoluteUrl } from "@/lib/site";
+
+export const metadata: Metadata = {
+  title: "AI Language Learning & Consultant Marketplace",
+  description: "Learn languages by speaking with an AI voice tutor, or connect with teachers and consultants on Parlezhub.",
+  alternates: { canonical: absoluteUrl("/") },
+  openGraph: {
+    title: "AI Language Learning & Consultant Marketplace | Parlezhub",
+    description: "Learn languages by speaking with an AI voice tutor, or connect with teachers and consultants on Parlezhub.",
+    url: absoluteUrl("/"),
+  },
+};
 
 export default function Home() {
   const learnWithVoiceAI = [
@@ -82,16 +95,16 @@ export default function Home() {
     leftCTA: {
       title: "For Learners",
       description: "Start learning a new language today with your personal AI tutor.",
-      buttonText: "Get Started Free",
+      buttonText: "I Want to Learn",
       buttonIcon: "rocket" as const,
-      href: APP_ROUTES.LANGUAGE
+      href: APP_ROUTES.STUDENT_CTA
     },
     rightCTA: {
       title: "For Teachers & Consultants",
       description: "Monetize your knowledge—post your gig and get discovered.",
-      buttonText: "Join as Teacher",
+      buttonText: "Join as Consultant",
       buttonIcon: "briefcase" as const,
-      href: APP_ROUTES.SIGN_UP
+      href: APP_ROUTES.CONSULTANT_CTA
     }
   };
 
@@ -100,7 +113,7 @@ export default function Home() {
       <Navigation />
       <main>
         <Hero />
-        <WhatIsShaktiWheel />
+        <WhatIsParlezhub />
         <FeatureGrid 
           title="Learn with Voice AI" 
           features={learnWithVoiceAI}
@@ -112,7 +125,7 @@ export default function Home() {
           className="bg-white"
         />
         <Reasons 
-          title="Why Choose Shakti Wheel?" 
+          title="Why Choose Parlezhub?"
           reasons={whyChooseReasons}
           className="bg-gray-50"
         />

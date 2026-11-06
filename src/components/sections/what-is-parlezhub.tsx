@@ -11,7 +11,7 @@ const SpeechBubbleIcon = iconMap["speech-bubble"];
 const DollarIcon = iconMap.dollar;
 const SparklesIcon = iconMap.star2;
 
-export function WhatIsShaktiWheel() {
+export function WhatIsParlezhub() {
   const fadeInUp = {
     initial: { opacity: 0, y: 20 },
     animate: { opacity: 1, y: 0 },
@@ -79,7 +79,7 @@ export function WhatIsShaktiWheel() {
           >
             What is{" "}
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary-600 to-primary-500">
-              Shakti Wheel
+              Parlezhub
             </span>
             ?
           </motion.h2>
@@ -89,14 +89,14 @@ export function WhatIsShaktiWheel() {
             className="max-w-4xl mx-auto"
           >
             <p className="text-xl text-gray-600 leading-relaxed mb-8">
-              Shakti Wheel is an <span className="font-semibold text-primary-600">AI-powered voice agent</span> that makes 
+              Parlezhub is an <span className="font-semibold text-primary-600">AI-powered voice agent</span> that makes
               learning natural and interactive. Our AI helps you learn new languages through real conversations, 
               correcting your pronunciation, grammar, and fluency in real time.
             </p>
             
             <div className="bg-gradient-to-r from-primary-50 to-primary-100 rounded-2xl p-6 mb-12">
               <p className="text-lg text-gray-700 leading-relaxed">
-                But that&apos;s not all—Linguaflex also empowers <span className="font-semibold text-primary-700">freelancers and consultants</span> by 
+                But that&apos;s not all—Parlezhub also empowers <span className="font-semibold text-primary-700">freelancers and consultants</span> by
                 providing a unique marketplace where you can build your business and connect with clients worldwide.
               </p>
             </div>

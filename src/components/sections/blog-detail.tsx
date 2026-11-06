@@ -14,13 +14,15 @@ import { Markdown } from "@/components/ui/markdown";
 import { useBlog, useBlogs } from "@/hooks/use-blogs";
 import { BlogDetailSkeleton } from "./blog-detail-skeleton";
 import { APP_ROUTES } from "@/constants/routes";
+import type { BlogPostDetail } from "@/lib/api";
 
 interface BlogDetailProps {
   slug: string;
+  initialPost?: BlogPostDetail;
 }
 
-export function BlogDetail({ slug }: BlogDetailProps) {
-  const { data: post, isLoading, error, refetch } = useBlog(slug);
+export function BlogDetail({ slug, initialPost }: BlogDetailProps) {
+  const { data: post, isLoading, error, refetch } = useBlog(slug, initialPost);
   const { data: allBlogs } = useBlogs();
 
   // Helper function to format date
@@ -322,7 +324,7 @@ export function BlogDetail({ slug }: BlogDetailProps) {
             Ready to Transform Your Career?
           </h2>
           <p className="text-primary-100 text-lg mb-8 max-w-2xl mx-auto">
-            Connect with {post.author_name} and other world-class consultants on Shakti Wheel.
+            Connect with {post.author_name} and other world-class consultants on Parlezhub.
             Start your journey to building a successful consulting practice.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">

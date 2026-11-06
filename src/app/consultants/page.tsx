@@ -6,10 +6,17 @@ import { BlogList } from "@/components/sections/blog-list";
 import { ConsultantsHero } from "@/components/sections/consultants-hero";
 import { Reasons } from "@/components/sections/reasons";
 import { APP_ROUTES } from "@/constants/routes";
+import { absoluteUrl } from "@/lib/site";
 
 export const metadata = {
-  title: "Find Your Consultant. Learn from the Best · Shakti Wheel",
-  description: "Browse through our community of language teachers, coaches, and consultants. Hire experts for 1-on-1 lessons, or explore their blog posts to learn from their shared experiences.",
+  title: "Find Language Teachers and Consultants",
+  description: "Find language teachers, coaches, and consultants for one-on-one lessons, or read expert insights from the Parlezhub community.",
+  alternates: { canonical: absoluteUrl("/consultants") },
+  openGraph: {
+    title: "Find Language Teachers and Consultants | Parlezhub",
+    description: "Browse language teachers, coaches, and consultants. Find one-on-one lessons and expert insights on Parlezhub.",
+    url: absoluteUrl("/consultants"),
+  },
 };
 
 export default function ConsultantsPage() {
@@ -40,16 +47,16 @@ export default function ConsultantsPage() {
     leftCTA: {
       title: "For Learners",
       description: "Find the perfect teacher for your goals. Learn faster, smarter, better.",
-      buttonText: "Start Learning",
+      buttonText: "I Want to Learn",
       buttonIcon: "rocket" as const,
-      href: APP_ROUTES.LANGUAGE
+      href: APP_ROUTES.STUDENT_CTA
     },
     rightCTA: {
       title: "For Teachers",
-      description: "Join Shakti Wheel to share your expertise, publish your blog posts, and earn.",
-      buttonText: "Become a Teacher",
+      description: "Join Parlezhub to share your expertise, publish your blog posts, and earn.",
+      buttonText: "Join as Consultant",
       buttonIcon: "briefcase" as const,
-      href: APP_ROUTES.SIGN_UP
+      href: APP_ROUTES.CONSULTANT_CTA
     }
   };
 
@@ -61,7 +68,7 @@ export default function ConsultantsPage() {
         <TeacherGrid />
         <BlogList />
         <Reasons 
-          title="Why Learn from Shakti Wheel Teachers?"
+          title="Why Learn from Parlezhub Consultants?"
           reasons={whyLearnReasons}
           className="bg-primary-50"
         />

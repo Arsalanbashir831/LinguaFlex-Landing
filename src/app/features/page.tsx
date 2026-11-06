@@ -6,6 +6,7 @@ import { DetailedFeature } from "@/components/sections/detailed-feature";
 import { iconMap } from "@/lib/icons";
 import { Card, CardContent } from "@/components/ui/card";
 import { APP_ROUTES } from "@/constants/routes";
+import { absoluteUrl } from "@/lib/site";
 
 // Import Lottie animations
 import tutorAnimation from "@/assets/lottie/tutor.json";
@@ -16,8 +17,14 @@ import communityAnimation from "@/assets/lottie/community.json";
 import securityAnimation from "@/assets/lottie/security.json";
 
 export const metadata = {
-  title: "Features - What Makes Shakti Wheel Unique · Shakti Wheel",
-  description: "Discover Shakti Wheel's powerful features: AI voice tutor, built-in chat system, freelance marketplace, personalized learning dashboard, global community, and secure payments.",
+  title: "AI Language Learning and Marketplace Features",
+  description: "Explore Parlezhub features: AI voice language practice, messaging, personalized learning, and a marketplace for teachers and consultants.",
+  alternates: { canonical: absoluteUrl("/features") },
+  openGraph: {
+    title: "AI Language Learning and Marketplace Features | Parlezhub",
+    description: "Explore Parlezhub features: AI voice language practice, messaging, personalized learning, and a marketplace for teachers and consultants.",
+    url: absoluteUrl("/features"),
+  },
 };
 
 export default function FeaturesPage() {
@@ -25,16 +32,16 @@ export default function FeaturesPage() {
     leftCTA: {
       title: "Start Learning Today",
       description: "Experience the power of AI-driven language learning with personalized feedback and real-time conversations.",
-      buttonText: "Start Learning",
+      buttonText: "I Want to Learn",
       buttonIcon: "microphone" as const,
-      href: APP_ROUTES.LANGUAGE
+      href: APP_ROUTES.STUDENT_CTA
     },
     rightCTA: {
-      title: "Join as a Teacher/Consultant",
+      title: "Join as a Consultant",
       description: "Share your expertise, build your reputation, and earn money by teaching or consulting on our platform.",
-      buttonText: "Join as Teacher",
+      buttonText: "Join as Consultant",
       buttonIcon: "briefcase" as const,
-      href: APP_ROUTES.SIGN_UP
+      href: APP_ROUTES.CONSULTANT_CTA
     }
   };
 
@@ -134,7 +141,7 @@ export default function FeaturesPage() {
                 </div>
                 <h3 className="text-2xl font-bold mb-4">All-in-One Platform</h3>
                 <p className="text-primary-100 text-lg">
-                  No need to juggle multiple apps—Shakti Wheel combines learning + freelancing + communication in one place.
+                  No need to juggle multiple apps—Parlezhub combines learning + freelancing + communication in one place.
                 </p>
               </CardContent>
             </Card>

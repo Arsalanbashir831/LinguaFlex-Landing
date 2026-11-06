@@ -1,4 +1,5 @@
 import { API_ROUTES } from "@/constants/routes";
+import { SITE_URL } from "@/lib/site";
 
 // API configuration
 const API_BASE_URL = process.env.NEXT_PUBLIC_API_BASE_URL || '';
@@ -112,6 +113,25 @@ class ApiService {
     const url = `${API_BASE_URL}${API_ROUTES.BLOGS}`;
     const response = await this.fetchWithErrorHandling<BlogListResponse>(url);
     return response.results;
+  }
+
+  async fetchAllBlogs(): Promise<BlogPost[]> {
+    let nextUrl: string | null = `${API_BASE_URL}${API_ROUTES.BLOGS}`;
+    const posts: BlogPost[] = [];
+    const visitedUrls = new Set<string>();
+    let pagesFetched = 0;
+
+    while (nextUrl && pagesFetched < 5000 && !visitedUrls.has(nextUrl)) {
+      visitedUrls.add(nextUrl);
+      const response = await this.fetchWithErrorHandling<BlogListResponse>(nextUrl);
+      posts.push(...response.results);
+      nextUrl = response.next
+        ? new URL(response.next, nextUrl || API_BASE_URL || SITE_URL).toString()
+        : null;
+      pagesFetched += 1;
+    }
+
+    return posts;
   }
 
   // Fetch single blog post by slug

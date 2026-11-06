@@ -1,7 +1,7 @@
 "use client";
 
 import { useQuery } from "@tanstack/react-query";
-import { apiService, QUERY_KEYS, type BlogPost } from "@/lib/api";
+import { apiService, QUERY_KEYS, type BlogPost, type BlogPostDetail } from "@/lib/api";
 
 // Hook for fetching all blogs
 export function useBlogs() {
@@ -18,11 +18,12 @@ export function useBlogs() {
 }
 
 // Hook for fetching a single blog by slug
-export function useBlog(slug: string) {
+export function useBlog(slug: string, initialData?: BlogPostDetail) {
   return useQuery({
     queryKey: QUERY_KEYS.BLOG_DETAIL(slug),
     queryFn: () => apiService.fetchBlogBySlug(slug),
     enabled: !!slug, // Only run query if slug exists
+    initialData,
   });
 }
 

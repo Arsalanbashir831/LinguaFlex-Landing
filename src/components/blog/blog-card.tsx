@@ -52,7 +52,7 @@ export function BlogCard({ post, showCta = false, showViews = false, className =
 					/>
 				) : (
 					<div className="text-primary-200 font-bold text-xl opacity-20 select-none">
-						LinguaFlex
+						Parlezhub
 					</div>
 				)}
 				<div className="absolute inset-0 bg-linear-to-t from-black/20 to-transparent" />

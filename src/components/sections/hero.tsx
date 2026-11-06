@@ -8,7 +8,6 @@ import micAnimation from "@/assets/lottie/mic.json";
 import flagAnimation from "@/assets/lottie/flags.json";
 import { APP_ROUTES } from "@/constants/routes";
 import Link from "next/link";
-import { StarIcon } from "lucide-react";
 
 const MicrophoneIcon = iconMap.microphone;
 const BriefcaseIcon = iconMap.briefcase;
@@ -36,7 +35,7 @@ export function Hero() {
               transition={{ duration: 0.6, delay: 0.2 }}
               className="mt-6 text-lg sm:text-xl text-gray-600 max-w-3xl"
             >
-              Shakti Wheel helps you learn languages interactively through a voice AI tutor,
+              Parlezhub helps you learn languages interactively through a voice AI tutor,
               while also providing a marketplace for teachers, coaches, and consultants to
               share their skills, post gigs, and earn—just like freelancing platforms but
               powered by AI chat.
@@ -48,29 +47,22 @@ export function Hero() {
               transition={{ duration: 0.6, delay: 0.4 }}
               className="mt-10 flex flex-col lg:flex-row lg:items-center gap-6 justify-center lg:justify-start"
             >
-              <Link href={APP_ROUTES.LANGUAGE}>
+              <Link href={APP_ROUTES.STUDENT_CTA}>
                 <Button
                   className="h-auto px-10 rounded-full bg-primary-600 text-white text-lg font-semibold hover:bg-primary-700 transition-all w-full sm:w-auto"
                 >
                   <MicrophoneIcon className="w-6 h-6 mr-2" />
-                  Start Learning Now
+                  I Want to Learn
                 </Button>
               </Link>
 
               <div className="flex items-center gap-1 p-1.5 bg-primary-600 backdrop-blur-sm border border-primary-100 rounded-full shadow-sm w-fit mx-auto lg:mx-0">
-                <span className="text-sm font-medium text-white pl-4 pr-2 whitespace-nowrap hidden sm:inline">Join as:</span>
+                <span className="text-sm font-medium text-white pl-4 pr-2 whitespace-nowrap hidden sm:inline">Join:</span>
                 <div className="flex items-center gap-1">
-                  <Link href={APP_ROUTES.SIGN_UP}>
+                  <Link href={APP_ROUTES.CONSULTANT_CTA}>
                     <Button variant="ghost" size="sm" className="rounded-full hover:bg-primary-50 text-white font-medium px-4 h-9">
                       <BriefcaseIcon className="w-4 h-4 mr-2" />
-                      Teacher
-                    </Button>
-                  </Link>
-                  <div className="w-px h-4 bg-primary-100 hidden sm:block"></div>
-                  <Link href={APP_ROUTES.SIGN_UP}>
-                    <Button variant="ghost" size="sm" className="rounded-full hover:bg-primary-50 text-white font-medium px-4 h-9">
-                      <StarIcon className="w-4 h-4 mr-2" />
-                      Astrologer
+                      Join as Consultant
                     </Button>
                   </Link>
                 </div>

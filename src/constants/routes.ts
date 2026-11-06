@@ -5,9 +5,9 @@ export const APP_ROUTES = {
     HOME: "/",
     FEATURES: "/features",
     CONSULTANTS: "/consultants",
-    SIGN_IN: appLink("/auth/sign-in"),
-    SIGN_UP: appLink("/auth/signup"),
-    LANGUAGE: appLink("/language")
+    SIGN_IN: "https://app.parlezhub.com/parlezhub/auth",
+    CONSULTANT_CTA: "https://app.parlezhub.com/parlezhub?role=consultant",
+    STUDENT_CTA: "https://app.parlezhub.com/parlezhub?role=student",
 }
 
 export const API_ROUTES = {

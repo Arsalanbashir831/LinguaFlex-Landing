@@ -20,6 +20,10 @@ You can start editing the page by modifying `app/page.tsx`. The page auto-update
 
 This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
 
+## SEO deployment settings
+
+The app serves its XML sitemap at `/sitemap.xml` and crawler rules at `/robots.txt`. Set `NEXT_PUBLIC_SITE_URL` in each deployment environment to the canonical public origin (for example, `https://www.parlezhub.com`) so canonical URLs, structured data, and sitemap links use the correct host. Published blog posts are added to the sitemap from the configured API.
+
 ## Learn More
 
 To learn more about Next.js, take a look at the following resources:
