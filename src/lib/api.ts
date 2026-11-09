@@ -123,7 +123,7 @@ class ApiService {
 
     while (nextUrl && pagesFetched < 5000 && !visitedUrls.has(nextUrl)) {
       visitedUrls.add(nextUrl);
-      const response = await this.fetchWithErrorHandling<BlogListResponse>(nextUrl);
+      const response: BlogListResponse = await this.fetchWithErrorHandling<BlogListResponse>(nextUrl);
       posts.push(...response.results);
       nextUrl = response.next
         ? new URL(response.next, nextUrl || API_BASE_URL || SITE_URL).toString()

@@ -32,9 +32,10 @@ To learn more about Next.js, take a look at the following resources:
 - [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
 
 You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+cd /var/www/LinguaFlex-Landing
+git pull                                      # if you deploy from git
+docker tag linguaflex-landing:latest linguaflex-landing:rollback   # keep a backup
+docker compose build                          # build new image (site stays up)
+docker compose up -d                          # swap in the new container
+docker compose ps                             # should say "(healthy)" after ~30s
+docker compose logs -f --tail 50              # watch logs (Ctrl+C to exit)
