@@ -1,8 +1,6 @@
 import { Navigation } from "@/components/layout/navigation";
 import { CTASplit } from "@/components/sections/cta-split";
 import { SiteFooter } from "@/components/sections/site-footer";
-import { TeacherGrid } from "@/components/sections/teacher-grid";
-import { BlogList } from "@/components/sections/blog-list";
 import { ConsultantsHero } from "@/components/sections/consultants-hero";
 import { Reasons } from "@/components/sections/reasons";
 import { APP_ROUTES } from "@/constants/routes";
@@ -65,8 +63,6 @@ export default function ConsultantsPage() {
       <Navigation />
       <main>
         <ConsultantsHero />
-        <TeacherGrid />
-        <BlogList />
         <Reasons 
           title="Why Learn from Parlezhub Consultants?"
           reasons={whyLearnReasons}

@@ -1,7 +1,9 @@
 "use client";
 
 import { motion } from "motion/react";
+import Link from "next/link";
 import { Button } from "@/components/ui/button";
+import { APP_ROUTES } from "@/constants/routes";
 import { iconMap } from "@/lib/icons";
 import { LottiePlayer } from "@/components/ui/lottie-player";
 import lottieAnimation from "@/assets/lottie/tutor.json";
@@ -9,13 +11,6 @@ import lottieAnimation from "@/assets/lottie/tutor.json";
 const SearchIcon = iconMap["magnifying-glass"];
 
 export function ConsultantsHero() {
-  const scrollToTeachers = () => {
-    const element = document.getElementById("teachers");
-    if (element) {
-      element.scrollIntoView({ behavior: "smooth" });
-    }
-  };
-
   return (
     <section className="relative h-[90vh] bg-gradient-to-b from-primary-50 to-white  flex items-center justify-center">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -48,14 +43,15 @@ export function ConsultantsHero() {
               transition={{ duration: 0.6, delay: 0.4 }}
               className="mt-8 flex flex-col sm:flex-row gap-4 justify-center lg:justify-start"
             >
-              <Button
-                size="lg"
-                onClick={scrollToTeachers}
-                className="bg-primary-600 hover:bg-primary-700 text-white px-8 py-4 text-lg"
-              >
-                <SearchIcon className="w-5 h-5 mr-2" />
-                Browse Consultants
-              </Button>
+              <Link href={APP_ROUTES.STUDENT_CTA}>
+                <Button
+                  size="lg"
+                  className="bg-primary-600 hover:bg-primary-700 text-white px-8 py-4 text-lg"
+                >
+                  <SearchIcon className="w-5 h-5 mr-2" />
+                  Browse Consultants
+                </Button>
+              </Link>
             </motion.div>
           </motion.div>
 
