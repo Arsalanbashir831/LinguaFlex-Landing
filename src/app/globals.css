@@ -8,6 +8,8 @@
   --color-foreground: var(--foreground);
   --font-sans: var(--font-inter);
   --font-mono: var(--font-geist-mono);
+  --font-serif: var(--font-instrument-serif);
+  --color-ink: #0f0a1f;
   
   /* Primary color utilities */
   --color-primary-50: rgb(var(--primary-50));
@@ -61,17 +63,17 @@
 :root {
   --radius: 1rem;
   
-  /* Primary color tokens - Orange theme */
-  --primary-50: 255 247 237;
-  --primary-100: 255 237 213;
-  --primary-200: 254 215 170;
-  --primary-300: 253 186 116;
-  --primary-400: 251 146 60;
-  --primary-500: 249 115 22;
-  --primary-600: 234 88 12;
-  --primary-700: 194 65 12;
-  --primary-800: 154 52 18;
-  --primary-900: 124 45 18;
+  /* Primary color tokens - ParlezHub violet (from logo) */
+  --primary-50: 246 242 255;
+  --primary-100: 237 230 255;
+  --primary-200: 221 208 255;
+  --primary-300: 196 172 255;
+  --primary-400: 164 122 255;
+  --primary-500: 137 76 252;
+  --primary-600: 120 48 240;
+  --primary-700: 103 33 214;
+  --primary-800: 85 29 175;
+  --primary-900: 70 27 141;
   --white: 255 255 255;
   --black: 0 0 0;
   
@@ -81,7 +83,7 @@
   --card-foreground: oklch(0.145 0 0);
   --popover: oklch(1 0 0);
   --popover-foreground: oklch(0.145 0 0);
-  --primary: oklch(0.641 0.148 70.67);
+  --primary: oklch(0.53 0.25 291);
   --primary-foreground: oklch(0.985 0 0);
   --secondary: oklch(0.97 0 0);
   --secondary-foreground: oklch(0.205 0 0);
@@ -92,7 +94,7 @@
   --destructive: oklch(0.577 0.245 27.325);
   --border: oklch(0.922 0 0);
   --input: oklch(0.922 0 0);
-  --ring: oklch(0.641 0.148 70.67);
+  --ring: oklch(0.53 0.25 291);
   --chart-1: oklch(0.646 0.222 41.116);
   --chart-2: oklch(0.6 0.118 184.704);
   --chart-3: oklch(0.398 0.07 227.392);
@@ -100,12 +102,12 @@
   --chart-5: oklch(0.769 0.188 70.08);
   --sidebar: oklch(0.985 0 0);
   --sidebar-foreground: oklch(0.145 0 0);
-  --sidebar-primary: oklch(0.641 0.148 70.67);
+  --sidebar-primary: oklch(0.53 0.25 291);
   --sidebar-primary-foreground: oklch(0.985 0 0);
   --sidebar-accent: oklch(0.97 0 0);
   --sidebar-accent-foreground: oklch(0.205 0 0);
   --sidebar-border: oklch(0.922 0 0);
-  --sidebar-ring: oklch(0.641 0.148 70.67);
+  --sidebar-ring: oklch(0.53 0.25 291);
 }
 
 .dark {
@@ -163,5 +165,134 @@
       animation-iteration-count: 1 !important;
       transition-duration: 0.01ms !important;
     }
+  }
+}
+
+/* ───────── Landing design system ───────── */
+@layer components {
+  .font-display {
+    font-family: var(--font-instrument-serif), ui-serif, Georgia, serif;
+    font-style: italic;
+    font-weight: 400;
+    letter-spacing: -0.01em;
+  }
+
+  .text-brand-gradient {
+    background-image: linear-gradient(100deg, #6d28ff 0%, #8b4cfc 45%, #c247f5 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+
+  .bg-brand-gradient {
+    background-image: linear-gradient(135deg, #7a2ff7 0%, #9246ff 55%, #b34cf5 100%);
+  }
+
+  .btn-brand {
+    @apply relative inline-flex items-center justify-center gap-2 rounded-full px-6 h-12 text-sm font-semibold text-white transition-transform duration-300 hover:-translate-y-0.5 focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-primary-300/60;
+    background-image: linear-gradient(135deg, #7a2ff7 0%, #9246ff 55%, #b34cf5 100%);
+    box-shadow:
+      0 1px 0 0 rgb(255 255 255 / 0.25) inset,
+      0 10px 30px -10px rgb(122 47 247 / 0.65);
+  }
+
+  .btn-ghost-light {
+    @apply inline-flex items-center justify-center gap-2 rounded-full px-6 h-12 text-sm font-semibold text-ink bg-white border border-black/[0.08] shadow-[0_4px_16px_-8px_rgb(15_10_31/0.25)] transition-all duration-300 hover:-translate-y-0.5 hover:border-primary-200 focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-primary-200;
+  }
+
+  /* Cylindrical glass navbar: frosted body + top sheen + soft under-shadow */
+  .glass-capsule {
+    background:
+      linear-gradient(180deg, rgb(255 255 255 / 0.78) 0%, rgb(255 255 255 / 0.42) 52%, rgb(246 240 255 / 0.55) 100%);
+    -webkit-backdrop-filter: blur(22px) saturate(180%);
+    backdrop-filter: blur(22px) saturate(180%);
+    border: 1px solid rgb(255 255 255 / 0.75);
+    box-shadow:
+      inset 0 1px 0 rgb(255 255 255 / 0.95),
+      inset 0 -1px 0 rgb(120 48 240 / 0.10),
+      inset 0 -10px 18px -12px rgb(120 48 240 / 0.18),
+      0 0 0 1px rgb(120 48 240 / 0.05),
+      0 12px 36px -16px rgb(76 29 149 / 0.28);
+  }
+  .glass-capsule::before {
+    content: "";
+    position: absolute;
+    inset: 1px 18px auto 18px;
+    height: 45%;
+    border-radius: 9999px;
+    background: linear-gradient(180deg, rgb(255 255 255 / 0.85), rgb(255 255 255 / 0));
+    pointer-events: none;
+    opacity: 0.7;
+  }
+  .glass-capsule > * {
+    position: relative;
+  }
+  .glass-capsule > nav.absolute {
+    position: absolute;
+  }
+  .glass-capsule--raised {
+    box-shadow:
+      inset 0 1px 0 rgb(255 255 255 / 0.95),
+      inset 0 -1px 0 rgb(120 48 240 / 0.12),
+      inset 0 -10px 18px -12px rgb(120 48 240 / 0.22),
+      0 0 0 1px rgb(120 48 240 / 0.06),
+      0 18px 50px -18px rgb(76 29 149 / 0.45);
+  }
+
+  .surface-card {
+    @apply rounded-3xl bg-white border border-black/[0.06];
+    box-shadow:
+      0 1px 2px rgb(15 10 31 / 0.04),
+      0 12px 40px -18px rgb(76 29 149 / 0.18);
+  }
+
+  .eyebrow {
+    @apply inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.18em] text-primary-600;
+  }
+
+  .bg-grid-faint {
+    background-image:
+      linear-gradient(to right, rgb(120 48 240 / 0.06) 1px, transparent 1px),
+      linear-gradient(to bottom, rgb(120 48 240 / 0.06) 1px, transparent 1px);
+    background-size: 56px 56px;
+  }
+}
+
+/* Brand range slider */
+.range-brand {
+  -webkit-appearance: none;
+  appearance: none;
+  height: 8px;
+  border-radius: 9999px;
+  background: linear-gradient(90deg, #7a2ff7, #b34cf5) 0 / var(--pct, 50%) 100% no-repeat, #ede6ff;
+  cursor: pointer;
+}
+.range-brand::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 24px;
+  height: 24px;
+  border-radius: 9999px;
+  background: #fff;
+  border: 6px solid #8a3cfb;
+  box-shadow: 0 6px 16px -4px rgb(122 47 247 / 0.6);
+  transition: transform 0.2s;
+}
+.range-brand::-webkit-slider-thumb:hover { transform: scale(1.12); }
+.range-brand::-moz-range-thumb {
+  width: 14px;
+  height: 14px;
+  border-radius: 9999px;
+  background: #fff;
+  border: 6px solid #8a3cfb;
+  box-shadow: 0 6px 16px -4px rgb(122 47 247 / 0.6);
+}
+.range-brand:focus-visible { outline: 3px solid rgb(196 172 255); outline-offset: 4px; }
+
+/* Hide scroll-reveal targets until GSAP animates them in (only when JS runs and motion is allowed). */
+@media (scripting: enabled) and (prefers-reduced-motion: no-preference) {
+  [data-reveal],
+  [data-hero],
+  [data-float-card] {
+    opacity: 0;
   }
 }

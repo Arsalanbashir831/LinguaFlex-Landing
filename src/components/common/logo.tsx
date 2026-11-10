@@ -1,38 +1,64 @@
-import { cn } from '@/lib/utils';
+import { useId } from "react";
+import { cn } from "@/lib/utils";
 
 interface LogoProps {
   className?: string;
-  size?: 'sm' | 'md' | 'lg';
+  size?: "sm" | "md" | "lg";
   isCollapsed?: boolean;
+  /** Use light text for dark backgrounds */
+  inverted?: boolean;
 }
 
-export function Logo({
-  className,
-  size = 'md',
-  isCollapsed = false,
-}: LogoProps) {
-  const sizeClasses = {
-    sm: 'text-xl',
-    md: 'text-2xl',
-    lg: 'text-3xl',
-  };
+const sizes = {
+  sm: { mark: 28, text: "text-lg" },
+  md: { mark: 34, text: "text-[22px]" },
+  lg: { mark: 42, text: "text-3xl" },
+};
 
+/** ParlezHub mark: a violet chat bubble carrying a voice waveform. */
+export function LogoMark({ size = 34, className }: { size?: number; className?: string }) {
+  const id = useId().replace(/:/g, "");
   return (
-    <div className={cn('flex items-center gap-2', className)}>
-      <div className="relative">
-        <div className="flex h-8 w-8 items-center justify-center rounded-[8px] bg-gradient-to-br from-primary-500 to-primary-600">
-          <span className="text-sm font-bold text-white">P</span>
-        </div>
-        <div className="absolute -right-1 -top-1 h-3 w-3 animate-pulse rounded-full bg-primary-400"></div>
-      </div>
+    <svg
+      width={size}
+      height={size}
+      viewBox="0 0 48 48"
+      fill="none"
+      aria-hidden="true"
+      className={className}
+    >
+      <defs>
+        <linearGradient id={`pz-g-${id}`} x1="6" y1="4" x2="44" y2="44" gradientUnits="userSpaceOnUse">
+          <stop stopColor="#B04CF6" />
+          <stop offset="0.55" stopColor="#8A3CFB" />
+          <stop offset="1" stopColor="#6A23F2" />
+        </linearGradient>
+      </defs>
+      <path
+        d="M24 3C35.6 3 45 11.9 45 23s-9.4 20-21 20c-2.9 0-5.7-.6-8.2-1.6L5.4 45.2c-.9.3-1.7-.6-1.4-1.4l3.1-8.6C4.5 31.8 3 27.6 3 23 3 11.9 12.4 3 24 3Z"
+        fill={`url(#pz-g-${id})`}
+      />
+      <rect x="15.5" y="18" width="4" height="10" rx="2" fill="#fff" />
+      <rect x="22" y="13" width="4" height="20" rx="2" fill="#fff" />
+      <rect x="28.5" y="16.5" width="4" height="13" rx="2" fill="#fff" />
+    </svg>
+  );
+}
+
+export function Logo({ className, size = "md", isCollapsed = false, inverted = false }: LogoProps) {
+  const s = sizes[size];
+  return (
+    <div className={cn("flex items-center gap-2.5", className)}>
+      <LogoMark size={s.mark} />
       {!isCollapsed && (
         <span
           className={cn(
-            'font-bold text-gray-900 dark:text-gray-100',
-            sizeClasses[size]
+            "font-bold tracking-tight",
+            inverted ? "text-white" : "text-[#1a1446]",
+            s.text,
           )}
         >
-          Parlez<span className="text-primary-500">hub</span>
+          ParlezHub
         </span>
       )}
     </div>

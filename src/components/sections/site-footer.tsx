@@ -1,95 +1,74 @@
 import Link from "next/link";
 import { Logo } from "@/components/common/logo";
+import { APP_ROUTES } from "@/constants/routes";
 
 const footerLinks = {
-  company: [
-    { name: "About Us", href: "/about" },
+  Product: [
     { name: "Features", href: "/features" },
+    { name: "Consultants", href: "/consultants" },
+    { name: "Start Learning", href: APP_ROUTES.STUDENT_CTA },
+    { name: "Become a Consultant", href: APP_ROUTES.CONSULTANT_CTA },
+  ],
+  Company: [
+    { name: "About Us", href: "/about" },
     { name: "Pricing", href: "/pricing" },
     { name: "Contact", href: "/contact" },
+    { name: "Blog", href: "/blog" },
   ],
-  support: [
+  Support: [
     { name: "Help Center", href: "/help" },
     { name: "Privacy Policy", href: "/privacy" },
     { name: "Terms of Service", href: "/terms" },
     { name: "Cookie Policy", href: "/cookies" },
   ],
-  community: [
-    { name: "Blog", href: "/blog" },
-    { name: "Community", href: "/community" },
-    { name: "Teachers", href: "/consultants" },
-    { name: "Students", href: "/students" },
-  ],
 };
 
 export function SiteFooter() {
   return (
-    <footer className="bg-primary-50 border-t border-primary-200">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-12">
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
-          <div className="col-span-1 md:col-span-1 space-y-3">
-            <Logo />
-            <p className="text-gray-600 text-sm leading-relaxed">
-              Learn, Teach, and Earn with Voice AI. Your AI-powered language tutor 
-              and freelance marketplace.
+    <footer className="relative overflow-hidden border-t border-black/[0.06] bg-white">
+      <div className="mx-auto max-w-6xl px-4 pt-16 sm:px-6">
+        <div className="grid grid-cols-2 gap-10 md:grid-cols-[1.6fr_1fr_1fr_1fr]">
+          <div className="col-span-2 space-y-4 md:col-span-1">
+            <Logo size="sm" />
+            <p className="max-w-xs text-sm leading-relaxed text-[#6d6787]">
+              Learn, teach and earn with voice AI. Your AI-powered language tutor and a global marketplace for
+              teachers and consultants.
             </p>
           </div>
-          
-          <div>
-            <h3 className="font-semibold text-gray-900 mb-4">Company</h3>
-            <ul className="space-y-2">
-              {footerLinks.company.map((link) => (
-                <li key={link.name}>
-                  <Link
-                    href={link.href}
-                    className="text-gray-600 hover:text-primary-600 text-sm transition-colors"
-                  >
-                    {link.name}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </div>
-          
-          <div>
-            <h3 className="font-semibold text-gray-900 mb-4">Support</h3>
-            <ul className="space-y-2">
-              {footerLinks.support.map((link) => (
-                <li key={link.name}>
-                  <Link
-                    href={link.href}
-                    className="text-gray-600 hover:text-primary-600 text-sm transition-colors"
-                  >
-                    {link.name}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </div>
-          
-          <div>
-            <h3 className="font-semibold text-gray-900 mb-4">Community</h3>
-            <ul className="space-y-2">
-              {footerLinks.community.map((link) => (
-                <li key={link.name}>
-                  <Link
-                    href={link.href}
-                    className="text-gray-600 hover:text-primary-600 text-sm transition-colors"
-                  >
-                    {link.name}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </div>
+
+          {Object.entries(footerLinks).map(([group, links]) => (
+            <div key={group}>
+              <h3 className="text-sm font-semibold text-ink">{group}</h3>
+              <ul className="mt-4 space-y-2.5">
+                {links.map((link) => (
+                  <li key={link.name}>
+                    <Link href={link.href} className="text-sm text-[#6d6787] transition-colors hover:text-primary-700">
+                      {link.name}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          ))}
         </div>
-        
-        <div className="border-t border-primary-200 mt-8 py-4">
-          <p className="text-center text-primary-500 text-sm">
-            © 2025 Parlezhub. All Rights Reserved.
-          </p>
+
+        <div className="mt-14 flex flex-col items-center justify-between gap-3 border-t border-black/[0.06] py-6 text-sm text-[#8a84a3] sm:flex-row">
+          <p>© {new Date().getFullYear()} ParlezHub. All rights reserved.</p>
+          <p>Made for curious minds everywhere 🌍</p>
         </div>
       </div>
+
+      <p
+        aria-hidden="true"
+        className="pointer-events-none -mb-[0.22em] select-none text-center text-[22vw] font-semibold leading-none tracking-[-0.06em] text-transparent md:text-[15vw]"
+        style={{
+          backgroundImage: "linear-gradient(180deg, rgb(137 76 252 / 0.14), rgb(137 76 252 / 0))",
+          WebkitBackgroundClip: "text",
+          backgroundClip: "text",
+        }}
+      >
+        ParlezHub
+      </p>
     </footer>
   );
 }
